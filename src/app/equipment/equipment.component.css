@@ -1,0 +1,13 @@
+.test
+{
+    border : 1px solid red;
+}
+
+.division
+{
+    display: inline-block;
+    border-bottom-width : 2px ;
+    border-bottom-color : gray;
+    width: 100%;
+    opacity: 20%;
+}

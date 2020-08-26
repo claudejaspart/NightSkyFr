@@ -1,0 +1,24 @@
+.test
+{
+    border : 1px solid red;
+}
+
+.header-size
+{
+    height: 50px;
+}
+
+.divide
+{
+    border-bottom-color: #506875;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+.header-custom-position
+{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+}

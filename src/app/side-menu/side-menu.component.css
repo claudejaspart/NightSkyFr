@@ -1,0 +1,23 @@
+.test
+{
+    border: 1px solid red;
+}
+
+.divide
+{
+    border-right-color: #506875;
+    border-right-style: solid;
+    border-right-width: 1px;
+}
+
+.sidebar-custom-position
+{
+    position: absolute;
+    top:50px;
+    left:0px;
+}
+
+.sidebar-width
+{
+    width: 40px;
+}

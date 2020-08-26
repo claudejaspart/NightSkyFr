@@ -1,0 +1,28 @@
+.test
+{
+    border : 1px solid red;
+}
+
+.custom-size
+{
+    height: 100%;
+    margin: 0;
+}
+
+.custom-image
+{
+    background: url("../../assets/Images/login-page.svg") no-repeat center fixed;
+    background-size: cover;
+
+}
+
+.section-size
+{
+    height:100%;
+}
+
+.max-height
+{
+    height: calc(100% - 50px);
+}
+

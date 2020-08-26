@@ -1,0 +1,26 @@
+
+<div class="">
+    <img src="../../assets/Icons/equipment/equipment-list.png"  class="ml-5 w-8 h-8 float-left mr-2">
+    <div class="text-xl text-white font-semibold">EQUIPMENT</div>
+    
+
+    <div class="inline-block w-screen text-sm text-white pl-3 p-8">
+
+        <span *ngIf="displayMenu, else displayAction">
+                <!-- menu equipement de base -->
+                <app-telescopes (navigationPanel)="onActionSelected($event)"></app-telescopes>
+        </span>
+    
+        <ng-template #displayAction>
+            <span [ngSwitch]="selectedAction">
+                <p *ngSwitchCase="'add-telescope'"><app-telescope-new (navigationPanel)="onActionSelected($event)"></app-telescope-new></p>
+            </span>
+        </ng-template>
+
+    </div>
+    <!--
+        <app-eyepieces></app-eyepieces>
+        <app-binoculars></app-binoculars>
+    -->
+</div>
+

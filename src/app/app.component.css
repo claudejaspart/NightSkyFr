@@ -1,0 +1,19 @@
+.custom-image
+{
+    background: url("../assets/Images/login-page.svg") no-repeat center fixed;
+    background-size: cover;
+
+}
+
+.test
+{
+    border : 1px solid red;
+}
+
+
+.menu-custom-position
+{
+    position: absolute;
+    top:50px;
+    left:40px;
+}

@@ -1,0 +1,16 @@
+<form (ngSubmit)="onSubmit(f)" #f="ngForm" class="max-height">
+  <section class="body-font section-size">
+    <div class="flex items-center custom-size custom-image ">
+      <div  class="bg-gray-900 rounded-lg m-5 p-8 flex flex-col mx-auto align-middle">
+        
+          <h1  class="text-white text-xl font-medium title-font mb-5">Login</h1>
+          <div  class="text-white text-sm mb-2">Email</div>
+          <input  type="email" name="email" ngModel required class="bg-gray-800 rounded border text-white border-gray-900 focus:outline-none focus:border-indigo-500 text-base px-4 py-2">
+          <div  class="text-white text-sm mt-4">Password</div>
+          <input  type="password" name="password" ngModel required class="bg-gray-800 rounded border text-white border-gray-900 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mt-2">
+          <button  [ngClass]="{animate__shakeX:badCredentials}" class="animate__animated text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-5"  >Submit</button>
+          <!--<p  class="text-xs text-gray-600 mt-3">Don't have an account ? <a  href="" class="text-gray-500">Sign up !</a></p>-->
+      </div>
+    </div>
+  </section>
+</form>

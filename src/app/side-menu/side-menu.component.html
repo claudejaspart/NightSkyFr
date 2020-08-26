@@ -1,0 +1,108 @@
+
+<nav class="inline-block sidebar-width sidebar-custom-position">
+    <ol class="bg-gray-900 divide">
+
+        <li     class="p-2 mb-1 hover:bg-gray-800" 
+                (click)="onSelectPage('dashboard')" 
+                [ngClass]="{'bg-teal-400 hover:bg-teal-400':currentSelection === 'dashboard'}"
+                matTooltip="dashboard"
+                matTooltipPosition="below"
+                matTooltipClass="bg-teal-400 text-xs text-black">
+
+            <img  class="w-6 h-6" src="../../assets/Icons/side-navbar/dashboard-blue.png">
+
+        </li>
+
+        <li     class="p-2 mb-1 hover:bg-gray-800" 
+                (click)="onSelectPage('statistics')" 
+                [ngClass]="{'bg-teal-400 hover:bg-teal-400':currentSelection === 'statistics'}"
+                matTooltip="statistics"
+                matTooltipPosition="below"
+                matTooltipClass="bg-teal-400 text-xs text-black">
+            
+                <img class="w-6 h-6" src="../../assets/Icons/side-navbar/chart-blue.png">
+           
+        </li>
+
+        <li     class="p-2 mb-1 hover:bg-gray-800" 
+                (click)="onSelectPage('observation-list')" 
+                [ngClass]="{'bg-teal-400 hover:bg-teal-400':currentSelection === 'observation-list'}"
+                matTooltip="observation list"
+                matTooltipPosition="below"
+                matTooltipClass="bg-teal-400 text-xs text-black">
+            
+            <img class="w-6 h-6" src="../../assets/Icons/side-navbar/observing-list.png">
+        </li>
+
+        <li     class="p-2 mb-1 hover:bg-gray-800" 
+                (click)="onSelectPage('sessions')" 
+                [ngClass]="{'bg-teal-400 hover:bg-teal-400':currentSelection === 'sessions'}"
+                matTooltip="sessions"
+                matTooltipPosition="below"
+                matTooltipClass="bg-teal-400 text-xs text-black">
+            
+            <img class="w-6 h-6" src="../../assets/Icons/side-navbar/calendar.png">
+        </li>
+
+        <li     class="p-2 mb-1 hover:bg-gray-800" 
+                (click)="onSelectPage('observations')" 
+                [ngClass]="{'bg-teal-400 hover:bg-teal-400':currentSelection === 'observations'}"
+                matTooltip="observations"
+                matTooltipPosition="below"
+                matTooltipClass="bg-teal-400 text-xs text-black">
+            
+            <img class="w-6 h-6" src="../../assets/Icons/side-navbar/observations-blue.png">
+        </li>
+
+
+        <li     class="p-2 mb-1 hover:bg-gray-800" 
+                (click)="onSelectPage('equipment')" 
+                [ngClass]="{'bg-teal-400 hover:bg-teal-400':currentSelection === 'equipment'}"
+                matTooltip="equipment"
+                matTooltipPosition="below"
+                matTooltipClass="bg-teal-400 text-xs text-black">
+                <img class="w-6 h-6" src="../../assets/Icons/side-navbar/equipment-list.png">
+        </li>
+
+        <li     class="p-2 mb-1 hover:bg-gray-800" 
+                (click)="onSelectPage('fov')" 
+                [ngClass]="{'bg-teal-400 hover:bg-teal-400':currentSelection === 'fov'}"
+                matTooltip="fields of views"
+                matTooltipPosition="below"
+                matTooltipClass="bg-teal-400 text-xs text-black">
+            
+            <img class="w-6 h-6" src="../../assets/Icons/side-navbar/fov.png">
+        </li>
+
+        <li     class="p-2 mb-1 hover:bg-gray-800" 
+                (click)="onSelectPage('sites')" 
+                [ngClass]="{'bg-teal-400 hover:bg-teal-400':currentSelection === 'sites'}"
+                matTooltip="observation sites"
+                matTooltipPosition="below"
+                matTooltipClass="bg-teal-400 text-xs text-black">
+                <img class="w-6 h-6" src="../../assets/Icons/side-navbar/sites.png">
+        </li>
+
+        <li     class="p-2 mb-1 hover:bg-gray-800" 
+                (click)="onSelectPage('gallery')" 
+                [ngClass]="{'bg-teal-400 hover:bg-teal-400':currentSelection === 'gallery'}"
+                matTooltip="gallery"
+                matTooltipPosition="below"
+                matTooltipClass="bg-teal-400 text-xs text-black">
+
+                <img class="w-6 h-6" src="../../assets/Icons/side-navbar/camera.png">
+        </li>
+
+        <li     class="p-2 mb-1 hover:bg-gray-800 hover:pointer" 
+                (click)="onSelectPage('ged')" 
+                [ngClass]="{'bg-teal-400 hover:bg-teal-400':currentSelection === 'ged'}"
+                matTooltip="documents"
+                matTooltipPosition="below"
+                matTooltipClass="bg-teal-400 text-xs text-black">
+
+        <img class="w-6 h-6" src="../../assets/Icons/side-navbar/folder.png">
+</li>
+
+    </ol>
+</nav>
+
