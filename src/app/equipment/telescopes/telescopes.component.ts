@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+
 
 @Component({
   selector: 'app-telescopes',
@@ -7,21 +8,25 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class TelescopesComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   currentSelection : string = "equipment";
 
   @Output() navigationPanel : EventEmitter<string> = new EventEmitter<string>();
+  @Input() telescopes;
+  
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
+    
   }
 
 
 
   onAddTelescope() 
   {
-    console.log("add a telescope");
     this.navigationPanel.emit('add-telescope');
   }   
 
 }
+

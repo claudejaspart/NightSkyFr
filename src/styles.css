@@ -18952,7 +18952,6 @@ video {
 
 .tooltip:hover .tooltip-text {
   visibility: visible;
-  cursor: pointer;
 }
 
 /* Chrome, Safari, Edge, Opera */

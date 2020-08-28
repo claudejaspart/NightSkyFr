@@ -5,9 +5,11 @@
     <div class="text-xl text-white mb-5">Telescopes
         <!-- bouton ajout-->
         <div class="inline-block">
-            <button class="ml-4  text-white bg-blue-500 border-0 py-1 px-2 focus:outline-none hover:font-semibold hover:bg-blue-700 rounded text-sm" (click)="onAddTelescope()">+ Add</button>
+            <button class="ml-4  text-white bg-blue-500 border-0 py-1 px-2 focus:outline-none hover:bg-blue-700 rounded text-sm" (click)="onAddTelescope()">+ Add</button>
         </div>
     </div>
+
+    <br>
 
     <!-- tableau-->
     <section class="text-gray-500 body-font w-1/1 text-xs mr-5">
@@ -15,45 +17,25 @@
             <div class="table-border p-2 rounded-lg ">
     
                 <!-- header -->
-                <div class="header flex pl-2 mb-5 text-white font-semibold">
+                <div class="header flex pl-2 mb-5 text-white ">
                     <div class="header-element flex-1">Name</div>
                     <div class="header-element flex-1">Diam.</div>
                     <div class="header-element flex-1">Focal</div>
                     <div class="header-element flex-1">F/D</div>
-                    <div class="header-element flex-1">Type</div>
+                    <div class="header-element flex-1">Brand</div>
                 </div>
             
-                <!-- data row -->
-                <div class="row-dark  pl-2 pt-2 pb-2">
+                <!-- data rows -->
+                <div  *ngFor="let telescope of telescopes; let i = index" class="pl-2 pt-2 pb-2" [ngClass]="{'row-dark':i%2==0,'row-light':i%2>0}">
                     <div class="element flex">
-                        <div class="flex-1 text-blue-500 font-semibold"><a href="#">Omegon</a></div>
-                        <div class="flex-1 text-white">250</div>
-                        <div class="flex-1 text-white">1270</div>
-                        <div class="flex-1 text-white">5.2</div>
-                        <div class="flex-1 text-white">Refractor</div>                            
+                        <div class="flex-1 text-blue-500"><a href="#">{{telescope.name}}</a></div>
+                        <div class="flex-1 text-white">{{telescope.aperture}}</div>
+                        <div class="flex-1 text-white">{{telescope.focal}}</div>
+                        <div class="flex-1 text-white">{{telescope.fdratio}}</div>
+                        <div class="flex-1 text-white">{{telescope.manufacturer}}</div>                            
                     </div>
                 </div>
                 
-                <div class="row-light  pl-2 pt-2 pb-2 ">
-                    <div class="element flex">
-                        <div class="flex-1 text-blue-500 font-semibold"><a href="#">Semi strock</a></div>
-                        <div class="flex-1 text-white">250</div>
-                        <div class="flex-1 text-white">1270</div>
-                        <div class="flex-1 text-white">5.2</div>
-                        <div class="flex-1 text-white">Dobson</div>                            
-                    </div>
-                </div>
-
-                <div class="row-dark  pl-2 pt-2 pb-2 ">
-                    <div class="element flex">
-                        <div class="flex-1 text-blue-500 font-semibold"><a href="#">Mak 127</a></div>
-                        <div class="flex-1 text-white">250</div>
-                        <div class="flex-1 text-white">1270</div>
-                        <div class="flex-1 text-white">5.2</div>
-                        <div class="flex-1 text-white">Mak</div>                            
-                    </div>
-                </div>
-            
             </div>
                 
             
