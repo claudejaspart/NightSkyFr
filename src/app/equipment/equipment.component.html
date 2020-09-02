@@ -1,10 +1,10 @@
 
 <div class="">
-    <img src="../../assets/Icons/equipment/equipment-list.png"  class="ml-5 w-8 h-8 float-left mr-2">
-    <div class="text-xl text-white">EQUIPMENT</div>
+    <img src="../../assets/Icons/equipment/equipment-list.png"  class="ml-5 w-8 h-8 mr-2 float-left ">
+    <div class="text-2xl text-white h-8 pt-1 font-medium title-font">EQUIPMENT</div>
     
 
-    <div class="inline-block w-screen text-sm text-white pl-3 p-8">
+    <div class="inline-block w-screen text-sm text-white pl-2 p-8">
 
         <span *ngIf="displayMenu, else displayAction">
                 <!-- menu equipement de base -->
@@ -13,7 +13,8 @@
     
         <ng-template #displayAction>
             <span [ngSwitch]="selectedAction">
-                <p *ngSwitchCase="'add-telescope'"><app-telescope-new (navigationPanel)="onActionSelected($event)"></app-telescope-new></p>
+                <p *ngSwitchCase="'telescope-add'"><app-telescope-new (navigationPanel)="onActionSelected($event)"></app-telescope-new></p>
+                <p *ngSwitchCase="'telescope-details'"><app-telescope-details (navigationPanel)="onActionSelected($event)"></app-telescope-details></p>
             </span>
         </ng-template>
 

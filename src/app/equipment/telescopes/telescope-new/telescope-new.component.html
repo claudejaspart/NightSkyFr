@@ -6,7 +6,7 @@
         <div class="text-xl text-white mb-5">New telescope
             <!-- bouton retour-->
             <div class="inline-block">
-                <button class="ml-4  text-white bg-blue-500 border-0 py-1 px-2 focus:outline-none hover:bg-blue-700 rounded text-sm" (click)="onReturn()"> < Back</button>
+                <button class="ml-4  text-white bg-blue-500 border-0 py-1 px-2 focus:outline-none hover:bg-blue-700 rounded text-sm" (click)="onReturn()"><img src="../../../../assets/Icons/general-icons/back.png"  class="mr-2 w-4 h-4 float-left  vcenter-icon-button">Back</button>
             </div>
         </div>
 
@@ -61,7 +61,7 @@
 
         <!-- button -->
         <div class="p-2 w-full">
-            <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-base">
+            <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-base" [ngClass]="{'':isFormValid ? 'bg-indigo-500' : 'bg-red-700'}">
                     Submit
             </button>
             <mat-spinner diameter="20" class="mt-2 flex mx-auto" color="warn" [ngStyle]="{'visibility':isAddingTelescope ? 'visible' : 'hidden'}"></mat-spinner>

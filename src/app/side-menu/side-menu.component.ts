@@ -15,15 +15,11 @@ export class SideMenuComponent implements OnInit {
 
   @Output() navigationPanel : EventEmitter<string> = new EventEmitter<string>();
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 
 
   onSelectPage(selectedPage) 
   {
-    // retourne la page choisie
-    console.log("Page choisie : " + selectedPage);
     this.currentSelection = selectedPage;
     this.navigationPanel.emit(selectedPage);
   }   

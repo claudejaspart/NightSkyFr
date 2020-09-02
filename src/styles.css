@@ -18954,6 +18954,11 @@ video {
   visibility: visible;
 }
 
+.vcenter-icon-button
+{
+  transform: translateY(2px);
+}
+
 /* Chrome, Safari, Edge, Opera */
 
 input::-webkit-outer-spin-button,

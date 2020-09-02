@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { DetailsService } from '../../../details.service';
 
 @Component({
   selector: 'app-telescope-details',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TelescopeDetailsComponent implements OnInit {
 
-  constructor() { }
+  telescope : any;
+  @Output() navigationPanel : EventEmitter<string> = new EventEmitter<string>();
+  
+  constructor(private detailsService : DetailsService) {}
 
-  ngOnInit(): void {
+  @Input() telescopeName : string;
+
+  ngOnInit(): void 
+  {
+    this.telescope = this.detailsService.getData();
+    console.log(this.telescope);
   }
+
+    // retourne à la page précédente
+    onReturn() 
+    {
+      this.navigationPanel.emit("");
+    } 
 
 }

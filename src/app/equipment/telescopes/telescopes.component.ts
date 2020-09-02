@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { DetailsService } from '../../details.service';
 
 
 @Component({
@@ -8,7 +9,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class TelescopesComponent implements OnInit {
 
-  constructor() {}
+  constructor(private detailsService : DetailsService) {}
 
   currentSelection : string = "equipment";
 
@@ -25,8 +26,15 @@ export class TelescopesComponent implements OnInit {
 
   onAddTelescope() 
   {
-    this.navigationPanel.emit('add-telescope');
+    this.navigationPanel.emit('telescope-add');
   }   
+
+  onSelectTelescope(index: number)
+  {
+    console.log("from telescope list : " + index);
+    this.detailsService.addData(this.telescopes[index]);
+    this.navigationPanel.emit('telescope-details');
+  }
 
 }
 

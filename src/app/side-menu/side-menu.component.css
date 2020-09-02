@@ -21,3 +21,17 @@
 {
     width: 40px;
 }
+
+li:hover
+{
+    cursor: pointer;
+}
+
+.sidenav 
+{
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 50px; /* Stay at the top */
+    left: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+  }
