@@ -9,7 +9,7 @@ export class AppComponent
 {
   // variables
   title = 'Night-Sky.Fr';
-  authorized : boolean = true;
+  authorized : boolean = false;
   userName : string = "";
   selectedPage : string = "equipment";
   
