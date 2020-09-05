@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { DetailsService } from '../../../details.service';
+import { TelescopeDataService } from '../../../telescope-data.service';
 
 @Component({
   selector: 'app-telescope-details',
@@ -10,8 +10,9 @@ export class TelescopeDetailsComponent implements OnInit {
 
   telescope : any;
   @Output() navigationPanel : EventEmitter<string> = new EventEmitter<string>();
+  editDataField : string = "";
   
-  constructor(private detailsService : DetailsService) {}
+  constructor(private detailsService : TelescopeDataService) {}
 
   @Input() telescopeName : string;
 
@@ -26,5 +27,10 @@ export class TelescopeDetailsComponent implements OnInit {
     {
       this.navigationPanel.emit("");
     } 
+
+    onEditTelescopeData()
+    {
+
+    }
 
 }

@@ -8,6 +8,10 @@
     border-right-color: #506875;
     border-right-style: solid;
     border-right-width: 1px;
+    border-bottom-color: #506875;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-right-radius: 5px;
 }
 
 .sidebar-custom-position

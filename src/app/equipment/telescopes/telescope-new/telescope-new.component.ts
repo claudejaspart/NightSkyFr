@@ -18,6 +18,8 @@ export class TelescopeNewComponent implements OnInit {
   fdratio : number;
   isAddingTelescope : boolean = false; 
   isFormValid : boolean = true;
+  numberSelectedImages : number = 0;
+  selectedFiles : File[] = [];
 
 
   ngOnInit(): void {
@@ -39,43 +41,61 @@ export class TelescopeNewComponent implements OnInit {
     }
   }
 
-  openDialog()
+  chooseFile(file)
   {
+    this.numberSelectedImages = file.length;
 
+    for(let i=0; i<file.length;i++)
+      this.selectedFiles.push(file[i]);
   }
 
   onSubmit(form : NgForm)
   {
-    // console.log(form.value.name);
-    // console.log(form.value.manufacturer);
-    // console.log(form.value.aperture);
-    // console.log(form.value.focal);
-    // console.log(form.value.fdratio);
-    // console.log(form.value.description);
-
-    const newTelescope =  
-    {
-        "name" : form.value.name,
-        "aperture" : form.value.aperture,
-        "focal" : form.value.focal,
-        "fdratio" : form.value.fdratio,
-        "manufacturer" : form.value.manufacturer,
-        "description" : form.value.description
-    };
-
-    const url = "/addTelescope";
-
-    this.isFormValid = form.valid
+    this.isFormValid = form.valid;
 
     if (this.isFormValid)
     {
+      // variable de traitement
       this.isAddingTelescope = true;
-      this.http.post(url , newTelescope, {responseType: 'text'}).toPromise().then(data => 
-      {
-        // console.log(data);
-        // todo : rediriger vers la page de détails du telescope si tout s'est bien passé
-        this.isAddingTelescope = false;
-      });
+
+      // variable formData
+      const fd = new FormData();
+
+      // add core data telescope
+      fd.append('name', form.value.name);
+      fd.append('aperture', form.value.aperture);
+      fd.append('focal', form.value.focal);
+      fd.append('fdratio', form.value.fdratio);
+      fd.append('manufacturer', form.value.manufacturer);
+      fd.append('description', form.value.description);
+      fd.append('author', 'Claude');
+
+      // ajout des images
+      this.selectedFiles.forEach( selectedFile => fd.append('image', selectedFile, selectedFile.name));
+
+      // envoi de la requete http
+      this.http.post( "/addTelescope" , fd, {responseType: 'text'}).subscribe(
+        data => 
+        {
+          this.isAddingTelescope = false;
+          console.log(data);
+        });
+      
     }
+    else
+    {
+      console.log("form is not valid !!")
+    }
+  }
+
+
+  getNumberSelectedImages()
+  {
+    if (this.numberSelectedImages === 0)
+      return "";
+    else if (this.numberSelectedImages === 1)
+      return "1 selected";
+    else
+      return `${this.numberSelectedImages} selected`;
   }
 }

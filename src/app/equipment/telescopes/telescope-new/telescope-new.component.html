@@ -3,7 +3,7 @@
 
         <!-- titre -->
         <img src="../../../assets/Icons/equipment/telescope.png"  class="ml-5 w-8 h-8 float-left mr-2">
-        <div class="text-2xl h-8 pt-1 text-white mb-5">New telescope
+        <div class="text-2xl h-8 pt-1 text-white mb-5">Add telescope
             <!-- bouton retour-->
             <div class="inline-block">
                 <button class="text-white bg-blue-600 border-0 py-1 px-1 ml-2 focus:outline-none hover:bg-blue-900 rounded text-sm" (click)="onReturn()"><img src="../../../../assets/Icons/general-icons/back.png"  class="w-4 h-4"></button>
@@ -22,7 +22,7 @@
         <!-- Manufacturer -->
         <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2 ">
             <div class="sm:text-sm text-xs mb-2">Manufacturer</div>
-            <input required name="manufacturer" ngModel class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="text">
+            <input name="manufacturer" ngModel class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="text">
         </div>
 
         <!-- Diameter -->
@@ -44,11 +44,18 @@
             <input required [(ngModel)]="fdratio" (focus)="calculateRatio()" name="fdratio" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number" step="0.1">
         </div>
 
+        <!-- Ajout d'images -->
+        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2">
+            <div class="sm:text-sm text-xs mb-2 italic">{{ getNumberSelectedImages() }}</div>
+            <input ngModel #hiddenfileinput name="image" style="display: none;" type="file" multiple (change)="chooseFile($event.target.files)" accept="image/x-png,image/gif,image/jpeg,image/ico">
+            <button type="button" name="selectfile" class="w-full h-8 bg-teal-500 rounded border-0 hover:bg-teal-600 sm:text-sm text-xs text-black px-4 py-1" (click)="hiddenfileinput.click()" >Select images ...</button>  
+        </div>
+
     
         <!-- description -->
         <div class="px-3 py-4 w-full">
             <div class="sm:text-sm text-xs mb-2">Description</div>
-            <textarea required name="description" ngModel class="w-full bg-gray-800 rounded border border-gray-700 text-white focus:outline-none h-24 focus:border-indigo-500 text-xs px-4 py-2 resize-none block"></textarea>
+            <textarea name="description" ngModel class="w-full bg-gray-800 rounded border border-gray-700 text-white focus:outline-none h-24 focus:border-indigo-500 text-xs px-4 py-2 resize-none block"></textarea>
         </div>
 
         <br>
@@ -56,8 +63,8 @@
 
         <!-- button -->
         <div class="px-3 py-4 w-full">
-            <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-base" [ngClass]="{'':isFormValid ? 'bg-indigo-500' : 'bg-red-700'}">
-                    Submit
+            <button  type="submit" class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-base" [ngClass]="{'animate__shakeX':!isFormValid}">
+                    Add it !
             </button>
             <mat-spinner diameter="20" class="mt-2 flex mx-auto" color="warn" [ngStyle]="{'visibility':isAddingTelescope ? 'visible' : 'hidden'}"></mat-spinner>
         </div>

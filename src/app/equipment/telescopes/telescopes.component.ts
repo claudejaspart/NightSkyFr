@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { DetailsService } from '../../details.service';
+import { TelescopeDataService } from '../../telescope-data.service';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { DetailsService } from '../../details.service';
 })
 export class TelescopesComponent implements OnInit {
 
-  constructor(private detailsService : DetailsService) {}
+  constructor(private detailsService : TelescopeDataService) {}
 
   currentSelection : string = "equipment";
 

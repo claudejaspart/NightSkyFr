@@ -3,21 +3,20 @@ import { Injectable, EventEmitter } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class DetailsService 
+export class TelescopeDataService 
 {
 
-  detailsSelected : string = "";
+  telescope : string = "";
 
   constructor() { }
 
-  addData(details : string)
+  addData(data : string)
   {
-    this.detailsSelected = details;
+    this.telescope = data;
   }
 
   getData(): string
   {
-    return this.detailsSelected;
+    return this.telescope;
   }
-
 }
