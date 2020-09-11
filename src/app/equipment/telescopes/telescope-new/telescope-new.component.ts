@@ -1,6 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType } from '@angular/common/http';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
+
 
 @Component({
   selector: 'app-telescope-new',
@@ -9,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TelescopeNewComponent implements OnInit {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private _snackBar: MatSnackBar) { }
 
 
   @Output() navigationPanel : EventEmitter<string> = new EventEmitter<string>();
@@ -17,9 +20,11 @@ export class TelescopeNewComponent implements OnInit {
   focal : number ;
   fdratio : number;
   isAddingTelescope : boolean = false; 
-  isFormValid : boolean = true;
   numberSelectedImages : number = 0;
   selectedFiles : File[] = [];
+  totalSelectedFileSize  = 0.0;
+  units : string = "";
+  uploadProgress : Number = 0;
 
 
   ngOnInit(): void {
@@ -28,7 +33,6 @@ export class TelescopeNewComponent implements OnInit {
   // retourne à la page précédente
   onReturn() 
   {
-    console.log("going back");
     this.navigationPanel.emit("");
   } 
 
@@ -44,17 +48,33 @@ export class TelescopeNewComponent implements OnInit {
   chooseFile(file)
   {
     this.numberSelectedImages = file.length;
+    this.totalSelectedFileSize = 0.0;
 
     for(let i=0; i<file.length;i++)
+    {
       this.selectedFiles.push(file[i]);
+      this.totalSelectedFileSize += parseFloat(file[i].size);
+    }
+
+    // calcul de la taille totale des fichiers
+    if (this.totalSelectedFileSize <= 1024)
+    {
+      this.units = "b";
+    }
+    else if (this.totalSelectedFileSize > 1024 && this.totalSelectedFileSize <= Math.pow(1024,2) )
+    {
+      this.units = "Kb";
+      this.totalSelectedFileSize = Math.round(100 * this.totalSelectedFileSize / 1024)/100;
+    }
+    else 
+    {
+      this.units = "Mb";
+      this.totalSelectedFileSize = Math.round(100 * this.totalSelectedFileSize / Math.pow(1024,2))/100;
+    }
   }
 
   onSubmit(form : NgForm)
   {
-    this.isFormValid = form.valid;
-
-    if (this.isFormValid)
-    {
       // variable de traitement
       this.isAddingTelescope = true;
 
@@ -74,18 +94,44 @@ export class TelescopeNewComponent implements OnInit {
       this.selectedFiles.forEach( selectedFile => fd.append('image', selectedFile, selectedFile.name));
 
       // envoi de la requete http
-      this.http.post( "/addTelescope" , fd, {responseType: 'text'}).subscribe(
-        data => 
-        {
-          this.isAddingTelescope = false;
-          console.log(data);
-        });
-      
-    }
-    else
-    {
-      console.log("form is not valid !!")
-    }
+      this.http.post( "/addTelescope" , 
+                      fd, 
+                      {
+                        responseType: 'text',
+                        reportProgress: true,
+                        observe: 'events'
+                      }
+                    ).subscribe(
+                    event => 
+                    {
+                      if (event.type === HttpEventType.UploadProgress)
+                      {
+                        this.uploadProgress = Math.round(100 * event.loaded / event.total);
+                        console.log("Upload progress : " + this.uploadProgress + " %");
+                      }
+                      else if (event.type === HttpEventType.Response)
+                      {
+                        if (event.body === "SUCCESS-TELESCOPE-DB-INS")
+                        {
+                          let snackBarRef = this._snackBar.open('Telescope created !', "close");
+                          // téléchargement terminé
+                          form.reset();
+                          this.isAddingTelescope = false;
+                          this.onReturn();
+                        }
+                        else if (event.body === "FAIL-TELESCOPE-DB-INS" || event.body === "FAIL-IMAGE-DB-INS")
+                        {
+                          // message d'erreur 
+                          let snackBarRef = this._snackBar.open('A problem occured !', "close");
+                          // reset du formulaire
+
+                          
+
+                          // téléchargement terminé
+                          this.isAddingTelescope = false;
+                        }
+                      }
+                    });
   }
 
 
@@ -93,9 +139,7 @@ export class TelescopeNewComponent implements OnInit {
   {
     if (this.numberSelectedImages === 0)
       return "";
-    else if (this.numberSelectedImages === 1)
-      return "1 selected";
     else
-      return `${this.numberSelectedImages} selected`;
+      return `${this.numberSelectedImages} selected - ${this.totalSelectedFileSize} ${this.units}`;
   }
 }

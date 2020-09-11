@@ -36,13 +36,13 @@ export class EquipmentComponent implements OnInit {
 
   getListTelescopes() 
   {
-    //this.http.get('/telescopes').subscribe((retrievedList) => this.telescopeList = retrievedList);
-    this.telescopeList = {};
-    this.telescopeList= [
-      {"name" : "Ultra dob","aperture" : 66, "focal" : 450, "fdratio" : 5.2, "manufacturer" : "Claudio", "description" : "Grossissement max : 120x. Poids : 3.2kg" },
-      {"name" : "Apo 66","aperture" : 66, "focal" : 450, "fdratio" : 5.2, "manufacturer" : "Claudio", "description" : "Grossissement max : 120x. Poids : 3.2kg" }
-    ];
-    console.log(this.telescopeList);
+    this.http.get('/telescopes').subscribe((retrievedList) => this.telescopeList = retrievedList);
+    // this.telescopeList = {};
+    // this.telescopeList= [
+    //   {"name" : "Ultra dob","aperture" : 66, "focal" : 450, "fdratio" : 5.2, "manufacturer" : "Claudio", "description" : "Grossissement max : 120x. Poids : 3.2kg" },
+    //   {"name" : "Apo 66","aperture" : 66, "focal" : 450, "fdratio" : 5.2, "manufacturer" : "Claudio", "description" : "Grossissement max : 120x. Poids : 3.2kg" }
+    // ];
+    
   }
 
 }
