@@ -17,6 +17,11 @@
     background-color: #232A32;
 }
 
+.snackbar
+{
+    max-width: 86% !important;  
+}
+
 .test
 {
     border: 1px solid red;

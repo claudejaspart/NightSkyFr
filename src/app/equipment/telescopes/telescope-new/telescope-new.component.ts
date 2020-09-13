@@ -25,6 +25,9 @@ export class TelescopeNewComponent implements OnInit {
   totalSelectedFileSize  = 0.0;
   units : string = "";
   uploadProgress : Number = 0;
+  creationFinished : boolean = false;
+
+  
 
 
   ngOnInit(): void {
@@ -33,7 +36,7 @@ export class TelescopeNewComponent implements OnInit {
   // retourne à la page précédente
   onReturn() 
   {
-    this.navigationPanel.emit("");
+        this.navigationPanel.emit("");
   } 
 
   // autocomplétion du rapport f/d
@@ -106,29 +109,57 @@ export class TelescopeNewComponent implements OnInit {
                     {
                       if (event.type === HttpEventType.UploadProgress)
                       {
-                        this.uploadProgress = Math.round(100 * event.loaded / event.total);
-                        console.log("Upload progress : " + this.uploadProgress + " %");
+                        let offset = 1;
+                        this.uploadProgress = Math.round(100 * event.loaded / event.total) - offset;
                       }
                       else if (event.type === HttpEventType.Response)
                       {
                         if (event.body === "SUCCESS-TELESCOPE-DB-INS")
-                        {
-                          let snackBarRef = this._snackBar.open('Telescope created !', "close");
-                          // téléchargement terminé
-                          form.reset();
-                          this.isAddingTelescope = false;
-                          this.onReturn();
+                        { 
+                          // fin upload
+                          this.uploadProgress = 100;  
+                          const that = this;  
+                          
+                          // message de succès
+                          let snackBarRef = this._snackBar.open('Telescope created !', "Success !", 
+                                            {
+                                              duration: 1500,
+                                              horizontalPosition:  'center',
+                                              panelClass: 'snackbar'                                              
+                                            });
+                              
+                          // actions lorsque la notif se ferme      
+                          snackBarRef.afterDismissed().subscribe(null, null, () => 
+                          {
+                            this.creationFinished = true;                                                                             
+                          });
+
+                          if (this.isAddingTelescope === true)
+                          {
+                            this.isAddingTelescope = false;
+                            this.onReturn();
+                          }                          
+
                         }
                         else if (event.body === "FAIL-TELESCOPE-DB-INS" || event.body === "FAIL-IMAGE-DB-INS")
                         {
+                          // fin upload
+                          this.uploadProgress = 100; 
+
                           // message d'erreur 
-                          let snackBarRef = this._snackBar.open('A problem occured !', "close");
-                          // reset du formulaire
+                          let snackBarRef = this._snackBar.open('An error occured !', "Error !", 
+                          {
+                            duration: 1500,
+                            horizontalPosition:  'center',
+                            panelClass: 'snackbar'                                              
+                          });  
 
-                          
+                          // actions lorsque la notif se ferme
+                          snackBarRef.afterDismissed().subscribe(null, null, () => 
+                          {
+                            this.isAddingTelescope = false;
+                          }); 
 
-                          // téléchargement terminé
-                          this.isAddingTelescope = false;
                         }
                       }
                     });
@@ -142,4 +173,6 @@ export class TelescopeNewComponent implements OnInit {
     else
       return `${this.numberSelectedImages} selected - ${this.totalSelectedFileSize} ${this.units}`;
   }
+
+
 }

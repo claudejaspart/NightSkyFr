@@ -63,11 +63,11 @@
 
         <!-- button -->
         <div class="px-3 py-4 w-full flex flex-wrap">
-            <div class="flex-1"><mat-spinner diameter="20" class="mt-2 flex mx-auto"  [ngStyle]="{'visibility':false ? 'visible' : 'hidden'}"></mat-spinner></div>
+            <div class="flex-1"><mat-spinner diameter="15" class="mt-2 flex mx-auto"  [ngStyle]="{'visibility':false ? 'visible' : 'hidden'}"></mat-spinner></div>
             <button type="submit" class="flex-2 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-base" [ngClass]="{'opacity-50 cursor-not-allowed':!f.valid || isAddingTelescope}" [disabled]="!f.valid">
                     Add it ! 
             </button>
-            <div class="flex-1"><mat-spinner diameter="30" class="ml-3 mt-1" mode="determinate" [value]="uploadProgress" color="accent" [ngStyle]="{'visibility':isAddingTelescope ? 'visible' : 'hidden'}"></mat-spinner></div>
+            <div class="flex-1"><mat-spinner diameter="15" class="ml-3 mt-1" mode="determinate" [value]="uploadProgress" color="accent" [ngStyle]="{'visibility':isAddingTelescope ? 'visible' : 'hidden'}"></mat-spinner><div class="flex mx-auto ml-3 text-xs" [ngStyle]="{'visibility':isAddingTelescope ? 'visible' : 'hidden'}">{{ uploadProgress }} %</div></div>
         </div>
         
     </div>

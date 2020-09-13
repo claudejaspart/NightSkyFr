@@ -25,6 +25,7 @@ export class EquipmentComponent implements OnInit {
 
   onActionSelected(action : string):void
   {
+    this.getListTelescopes();
     this.displayMenu = action.length > 0 ? false : true;
     this.selectedAction = action;
   }
@@ -44,5 +45,6 @@ export class EquipmentComponent implements OnInit {
     // ];
     
   }
+
 
 }
