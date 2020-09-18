@@ -13,18 +13,18 @@ import { EquipmentComponent } from './equipment/equipment.component';
 import { SitesComponent } from './sites/sites.component';
 import { FovIndicatorsComponent } from './fov-indicators/fov-indicators.component';
 import { TelescopesComponent } from './equipment/telescopes/telescopes.component';
-import { EyepiecesComponent } from './equipment/eyepieces/eyepieces.component';
-import { BinocularsComponent } from './equipment/binoculars/binoculars.component';
-import { BarlowComponent } from './equipment/barlow/barlow.component';
-import { FiltersComponent } from './equipment/filters/filters.component';
 import { TelescopeDetailsComponent } from './equipment/telescopes/telescope-details/telescope-details.component';
 import { TelescopeNewComponent } from './equipment/telescopes/telescope-new/telescope-new.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {  MatTooltipModule} from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ItemsComponent } from './equipment/items/items.component';
+import { ItemsListComponent } from './equipment/items/items-list/items-list.component';
+import { ItemsDetailsComponent } from './equipment/items/items-details/items-details.component';
+import { ItemsNewComponent } from './equipment/items/items-new/items-new.component';
 
 
 
@@ -42,12 +42,12 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     SitesComponent,
     FovIndicatorsComponent,
     TelescopesComponent,
-    EyepiecesComponent,
-    BinocularsComponent,
-    BarlowComponent,
-    FiltersComponent,
     TelescopeDetailsComponent,
-    TelescopeNewComponent
+    TelescopeNewComponent,
+    ItemsComponent,
+    ItemsListComponent,
+    ItemsDetailsComponent,
+    ItemsNewComponent
   ],
   imports: [
     BrowserModule,

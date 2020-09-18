@@ -1,27 +1,21 @@
-
 <div class="">
+
+    <!-- titre -->
     <img src="../../assets/Icons/equipment/equipment-list.png"  class="ml-5 w-8 h-8 mr-2 float-left ">
     <div class="text-2xl text-white h-8 pt-1 font-medium title-font">EQUIPMENT</div>
     
-
+    <!-- contenu -->
     <div class="inline-block w-screen text-sm text-white pl-2 p-8">
 
-        <span *ngIf="displayMenu, else displayAction">
-                <!-- menu equipement de base -->
-                <app-telescopes (navigationPanel)="onActionSelected($event)" [telescopes]="telescopeList"></app-telescopes>
-        </span>
-    
-        <ng-template #displayAction>
-            <span [ngSwitch]="selectedAction">
-                <p *ngSwitchCase="'telescope-add'"><app-telescope-new (navigationPanel)="onActionSelected($event)"></app-telescope-new></p>
-                <p *ngSwitchCase="'telescope-details'"><app-telescope-details (navigationPanel)="onActionSelected($event)"></app-telescope-details></p>
-            </span>
-        </ng-template>
+        <app-items [type]="'telescope'" *ngIf="displayStatus==='all' || displayStatus==='telescope'"></app-items>
+        <br><br><br>
+
+        <app-items [type]="'eyepiece'" *ngIf="displayStatus==='all' || displayStatus==='eyepiece'"></app-items>
+        <br><br><br>
+
+        <app-items [type]="'binoculars'" *ngIf="displayStatus==='all' || displayStatus==='binoculars'"></app-items>
+        <br><br><br>
 
     </div>
-    <!--
-        <app-eyepieces></app-eyepieces>
-        <app-binoculars></app-binoculars>
-    -->
-</div>
 
+</div>
