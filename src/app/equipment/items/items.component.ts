@@ -12,6 +12,14 @@ export class ItemsComponent implements OnInit
 
   @Input() type : string = "generic";
   currentItemState : string = "";
+  currentSelectedItemIndex : number;
+
+  selectedItem = {
+    "type" : "",
+    "iconUrl" : "",
+    "details" : ""
+  };
+
   itemData = {
     "name" : "",
     "iconUrl" : "",
@@ -77,6 +85,14 @@ export class ItemsComponent implements OnInit
   ngDoCheck(): void
   {
     this.currentItemState = this.itemState.getState();
+    this.currentSelectedItemIndex = this.itemState.getSelectedItemIndex();
+    if (this.currentSelectedItemIndex >= 0)
+    {
+      console.log("details")
+      this.selectedItem.type = this.type;
+      this.selectedItem.iconUrl = this.itemData.iconUrl;
+      this.selectedItem.details = this.itemData.list[this.currentSelectedItemIndex];
+    }
   }
 
 }

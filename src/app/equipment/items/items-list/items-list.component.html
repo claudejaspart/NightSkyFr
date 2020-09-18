@@ -30,7 +30,7 @@
                 <!-- data rows -->
                 <div  *ngFor="let item of itemData.list; let i = index" class="pl-2 pt-2 pb-2" [ngClass]="{'row-dark':i%2==0,'row-light':i%2>0}">
                     <div class="element flex">
-                        <div class="flex-1 text-blue-500"><a href="#">{{item.name}}</a></div>
+                        <div class="flex-1 text-blue-500" (click)="onSelectedItem(i)"><a href="#">{{item.name}}</a></div>
                         <div class="flex-1 text-white text-center ">{{item.aperture}}</div>
                         <div class="flex-1 text-white text-center">{{item.focal}}</div>
                         <div class="flex-1 text-white text-center">{{item.fdratio}}</div>

@@ -25,4 +25,11 @@ export class ItemsListComponent implements OnInit
     this.displayService.setDisplayStatus(this.type);
   }
 
+  onSelectedItem(index : number)
+  {
+    this.itemState.setState('details');
+    this.itemState.setSelectedItemIndex(index);
+    this.displayService.setDisplayStatus(this.type);
+  }
+
 }

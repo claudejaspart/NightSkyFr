@@ -32,7 +32,7 @@ export class ItemsNewComponent implements OnInit {
   // returning to the list of items
   onReturn()
   {
-
+    
   }
 
   // autocomplétion du rapport f/d

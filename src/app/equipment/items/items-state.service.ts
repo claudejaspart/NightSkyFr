@@ -9,11 +9,12 @@ export class ItemsStateService {
 
   // states:
   // list : view items as a global list
-  // view : view details of a given item 
+  // details : view details of a given item 
   // edit : edit details of a given item
   // create : create a new item
   
   public state = new BehaviorSubject<string>('list');
+  public selectedItemIndex = new BehaviorSubject<number>(-1);
 
   constructor() { }
 
@@ -25,5 +26,20 @@ export class ItemsStateService {
   getState() : string
   {
     return this.state.value;
+  }
+
+  setSelectedItemIndex(index : number)
+  {
+    this.selectedItemIndex.next(index);
+  }
+
+  getSelectedItemIndex(): number
+  {
+    return this.selectedItemIndex.value;
+  }
+
+  resetSelectedItemIndex()
+  {
+    this.selectedItemIndex.next(-1);
   }
 }
