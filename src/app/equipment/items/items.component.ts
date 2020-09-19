@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ItemsStateService } from './items-state.service';
-import { ItemsFetchService } from './items-fetch.service'
+import { ItemsFetchService } from './items-fetch.service';
+
 
 @Component({
   selector: 'app-items',
@@ -13,14 +14,18 @@ export class ItemsComponent implements OnInit
   @Input() type : string = "generic";
   currentItemState : string = "";
   currentSelectedItemIndex : number;
+  newItemFields : any;
+  detailsItemFields : any;
 
-  selectedItem = {
+  selectedItem = 
+  {
     "type" : "",
     "iconUrl" : "",
     "details" : ""
   };
 
-  itemData = {
+  itemData = 
+  {
     "name" : "",
     "iconUrl" : "",
     "col1" : "",
@@ -30,7 +35,8 @@ export class ItemsComponent implements OnInit
     "list" : ""
   };
   
-  constructor(private itemState : ItemsStateService, private itemsFetchService : ItemsFetchService) { }
+  constructor(private itemState : ItemsStateService, 
+              private itemsFetchService : ItemsFetchService) { }
 
   ngOnInit(): void 
   {
@@ -86,6 +92,7 @@ export class ItemsComponent implements OnInit
   {
     this.currentItemState = this.itemState.getState();
     this.currentSelectedItemIndex = this.itemState.getSelectedItemIndex();
+    // on remplit l'objet sélectionné
     if (this.currentSelectedItemIndex >= 0)
     {
       console.log("details")

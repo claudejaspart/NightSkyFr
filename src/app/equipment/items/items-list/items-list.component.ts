@@ -12,8 +12,11 @@ export class ItemsListComponent implements OnInit
 
   @Input() type : string = ""
   @Input() itemData;
+  newItem : any;
 
-  constructor(private displayService : DisplayService, private itemState : ItemsStateService) { }
+
+  constructor(private displayService : DisplayService, 
+              private itemState : ItemsStateService) { }
 
   ngOnInit(): void 
   {

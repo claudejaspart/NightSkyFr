@@ -8,13 +8,11 @@
     <div class="inline-block w-screen text-sm text-white pl-2 p-8">
 
         <app-items [type]="'telescope'" *ngIf="displayStatus==='all' || displayStatus==='telescope'"></app-items>
-        <br><br><br>
-
+        
         <app-items [type]="'eyepiece'" *ngIf="displayStatus==='all' || displayStatus==='eyepiece'"></app-items>
-        <br><br><br>
-
+        
         <app-items [type]="'binoculars'" *ngIf="displayStatus==='all' || displayStatus==='binoculars'"></app-items>
-        <br><br><br>
+       
 
     </div>
 

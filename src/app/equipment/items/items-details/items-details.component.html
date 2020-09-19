@@ -4,7 +4,7 @@
         <img class=" ml-5 w-8 h-8 float-left mr-2 " src={{selectedItem.iconUrl}}  >
         <div  class="inline-block h-8  sm:text-3xl text-2xl  pt-1 float-left ml-2 mr-2">
             {{selectedItem.details.manufacturer}} {{selectedItem.details.name}} 
-            <button class="text-white bg-blue-600 border-0 py-1 px-1 ml-2 focus:outline-none hover:bg-blue-900 rounded text-sm"><img src="../../../../assets/Icons/general-icons/back.png"  class="w-4 h-4"></button>
+            <button class="text-white bg-blue-600 border-0 py-1 px-1 ml-2 focus:outline-none hover:bg-blue-900 rounded text-sm" (click)="onReturn()"><img src="../../../../assets/Icons/general-icons/back.png"  class="w-4 h-4"></button>
             <br>
             <div class="block text-xs text-teal-500 pt-1 sm:inline-block">- {{selectedItem.type}} -</div>
         </div>

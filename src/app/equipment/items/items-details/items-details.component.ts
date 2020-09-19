@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DisplayService } from '../../display.service';
+import { ItemsStateService } from '../items-state.service';
 
 @Component({
   selector: 'app-items-details',
@@ -9,11 +11,18 @@ export class ItemsDetailsComponent implements OnInit
 {
   @Input() selectedItem : any;
   
-  constructor() { }
+  constructor(private displayService : DisplayService, private itemsStateService : ItemsStateService) { }
 
   ngOnInit(): void 
   {
 
+  }
+
+  // returning to the list of items
+  onReturn()
+  {
+    this.itemsStateService.setState('list');
+    this.displayService.setDisplayStatus('all');
   }
 
 }

@@ -1,7 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DisplayService } from '../../display.service';
+import { ItemsStateService } from '../items-state.service';
 
 @Component({
   selector: 'app-items-new',
@@ -10,10 +12,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ItemsNewComponent implements OnInit {
 
-  constructor(private http : HttpClient, private _snackBar: MatSnackBar) { }
+  constructor(private http : HttpClient, 
+              private _snackBar: MatSnackBar, 
+              private displayService : DisplayService,
+              private itemsStateService : ItemsStateService) { }
 
 
   @Output() navigationPanel : EventEmitter<string> = new EventEmitter<string>();
+  itemsNewFields : any;
+  type : string;
+
   diameter : number ;
   focal : number ;
   fdratio : number;
@@ -26,13 +34,16 @@ export class ItemsNewComponent implements OnInit {
   creationFinished : boolean = false;
 
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
+    this.type = this.displayService.getDisplayStatus();
   }
 
   // returning to the list of items
   onReturn()
   {
-    
+    this.itemsStateService.setState('list');
+    this.displayService.setDisplayStatus('all');
   }
 
   // autocomplétion du rapport f/d
