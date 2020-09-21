@@ -1,194 +1,99 @@
 <!-- formulaire de création de telescope -->
-<form (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf="type==='telescope'"> 
+<form (ngSubmit)="onSubmit(f)" #f="ngForm"> 
     <div class="mr-5 sm:w-1/2">
 
-        <!-- titre -->
-        <img src="../../../assets/Icons/equipment/telescope.png"  class="ml-5 w-8 h-8 float-left mr-2">
-        <div class="text-2xl h-8 pt-1 text-white mb-5">Add telescope
+        <!-- TITRE -->
+        <!-- icone -->
+        <img src="../../../assets/Icons/equipment/telescope.png"  class="ml-5 w-8 h-8 float-left mr-2" *ngIf="type==='telescope'">
+        <img src="../../../assets/Icons/equipment/eyepiece.png"  class="ml-5 w-8 h-8 float-left mr-2" *ngIf="type==='eyepiece'">
+        <img src="../../../assets/Icons/equipment/binoculars.png"  class="ml-5 w-8 h-8 float-left mr-2" *ngIf="type==='binoculars'">
+        
+        <div class="text-2xl h-8 pt-1 text-white mb-5">Add {{ type }}
             <!-- bouton retour-->
             <div class="inline-block">
                 <button class="text-white bg-blue-600 border-0 py-1 px-1 ml-2 focus:outline-none hover:bg-blue-900 rounded text-sm" (click)="onReturn()"><img src="../../../../assets/Icons/general-icons/back.png"  class="w-4 h-4"></button>
             </div>
         </div>
 
-    
-        <!-- Name -->
+        <!-- Common Name -->
         <div class="inline-block px-3 py-4  sm:w-1/3 w-1/2">
             <div class="sm:text-sm text-xs mb-2">Name *</div>
             <input required name="name" ngModel class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="text">
         </div>
 
-        <!-- Manufacturer -->
-        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2 ">
+        <!-- Common Manufacturer -->
+        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2">
             <div class="sm:text-sm text-xs mb-2">Manufacturer</div>
             <input name="manufacturer" ngModel class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="text">
         </div>
 
+        <!-- Telescope data -->
         <!-- Diameter -->
-        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2 ">
+        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2" *ngIf="type==='telescope'">
             <div class="sm:text-sm text-xs mb-2">Aperture (mm) *</div>
-            <input required [(ngModel)]="diameter" name="aperture" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
+            <input required [(ngModel)]="telescopeDiameter" name="telescopeAperture" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
         </div>
 
         
         <!-- Focal length -->
-        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2">
+        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2" *ngIf="type==='telescope'">
             <div class="sm:text-sm text-xs mb-2">Focal (mm) *</div>
-            <input required [(ngModel)]="focal" name="focal" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
+            <input required [(ngModel)]="telescopeFocal" name="telescopeFocal" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
         </div>
 
         <!-- F/D ratio -->
-        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2">
+        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2" *ngIf="type==='telescope'">
             <div class="sm:text-sm text-xs mb-2">F/D *</div>
-            <input required [(ngModel)]="fdratio" (focus)="calculateRatio()" name="fdratio" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number" step="0.1">
+            <input required [(ngModel)]="telescopeFDRatio" (focus)="calculateRatio()" name="telescopeFDRatio" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number" step="0.1">
         </div>
 
-        <!-- Ajout d'images -->
-        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2">
-            <div class="sm:text-sm text-xs mb-2 italic">{{ getNumberSelectedImages() }}</div>
-            <input ngModel #hiddenfileinput name="image" style="display: none;" type="file" multiple (change)="chooseFile($event.target.files)" accept="image/x-png,image/gif,image/jpeg,image/ico">
-            <button type="button" name="selectfile" class="w-full h-8 bg-teal-500 rounded border-0 hover:bg-teal-600 sm:text-sm text-xs text-black px-4 py-1" (click)="hiddenfileinput.click()" >Select images ...</button>  
-        </div>
-
-    
-        <!-- description -->
-        <div class="px-3 py-4 w-full">
-            <div class="sm:text-sm text-xs mb-2">Description</div>
-            <textarea name="description" ngModel class="w-full bg-gray-800 rounded border border-gray-700 text-white focus:outline-none h-24 focus:border-indigo-500 text-xs px-4 py-2 resize-none block"></textarea>
-        </div>
-
-        <br>
-
-
-        <!-- button -->
-        <div class="px-3 py-4 w-full flex flex-wrap">
-            <div class="flex-1"><mat-spinner diameter="15" class="mt-2 flex mx-auto"  [ngStyle]="{'visibility':false ? 'visible' : 'hidden'}"></mat-spinner></div>
-            <button type="submit" class="flex-2 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-base" [ngClass]="{'opacity-50 cursor-not-allowed':!f.valid || isAddingTelescope}" [disabled]="!f.valid">
-                    Add it ! 
-            </button>
-            <div class="flex-1"><mat-spinner diameter="15" class="ml-3 mt-1" mode="determinate" [value]="uploadProgress" color="accent" [ngStyle]="{'visibility':isAddingTelescope ? 'visible' : 'hidden'}"></mat-spinner><div class="flex mx-auto ml-3 text-xs" [ngStyle]="{'visibility':isAddingTelescope ? 'visible' : 'hidden'}">{{ uploadProgress }} %</div></div>
-        </div>
-        
-    </div>
-</form>
 
 
 
-<!-- formulaire de création d'oculaire -->
-<form (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf="type==='eyepiece'"> 
-    <div class="mr-5 sm:w-1/2">
 
-        <!-- titre -->
-        <img src="../../../assets/Icons/equipment/eyepiece.png"  class="ml-5 w-8 h-8 float-left mr-2">
-        <div class="text-2xl h-8 pt-1 text-white mb-5">Add Eyepiece
-            <!-- bouton retour-->
-            <div class="inline-block">
-                <button class="text-white bg-blue-600 border-0 py-1 px-1 ml-2 focus:outline-none hover:bg-blue-900 rounded text-sm" (click)="onReturn()"><img src="../../../../assets/Icons/general-icons/back.png"  class="w-4 h-4"></button>
-            </div>
-        </div>
 
-    
-        <!-- Name -->
-        <div class="inline-block px-3 py-4  sm:w-1/3 w-1/2">
-            <div class="sm:text-sm text-xs mb-2">Name *</div>
-            <input required name="name" ngModel class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="text">
-        </div>
 
-        <!-- Manufacturer -->
-        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2 ">
-            <div class="sm:text-sm text-xs mb-2">Manufacturer</div>
-            <input name="manufacturer" ngModel class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="text">
-        </div>
 
-      
-        <!-- Focal length -->
-        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2">
+        <!-- EYEPIECE -->
+        <!-- Focal length * -->
+        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2" *ngIf="type==='eyepiece'">
             <div class="sm:text-sm text-xs mb-2">Focal (mm) *</div>
-            <input required [(ngModel)]="focal" name="focal" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
+            <input required  name="eyepieceFocal" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
         </div>
 
         <!-- AFOV -->
-        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2">
+        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2" *ngIf="type==='eyepiece'">
             <div class="sm:text-sm text-xs mb-2">AFOV</div>
-            <input required [(ngModel)]="diameter" name="afov" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
+            <input  name="eyepieceAFOV" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
         </div>
 
-        <!-- Ajout d'images -->
-        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2">
-            <div class="sm:text-sm text-xs mb-2 italic">{{ getNumberSelectedImages() }}</div>
-            <input ngModel #hiddenfileinput name="image" style="display: none;" type="file" multiple (change)="chooseFile($event.target.files)" accept="image/x-png,image/gif,image/jpeg,image/ico">
-            <button type="button" name="selectfile" class="w-full h-8 bg-teal-500 rounded border-0 hover:bg-teal-600 sm:text-sm text-xs text-black px-4 py-1" (click)="hiddenfileinput.click()" >Select images ...</button>  
-        </div>
-
-    
-        <!-- description -->
-        <div class="px-3 py-4 w-full">
-            <div class="sm:text-sm text-xs mb-2">Description</div>
-            <textarea name="description" ngModel class="w-full bg-gray-800 rounded border border-gray-700 text-white focus:outline-none h-24 focus:border-indigo-500 text-xs px-4 py-2 resize-none block"></textarea>
-        </div>
-
-        <br>
 
 
-        <!-- button -->
-        <div class="px-3 py-4 w-full flex flex-wrap">
-            <div class="flex-1"><mat-spinner diameter="15" class="mt-2 flex mx-auto"  [ngStyle]="{'visibility':false ? 'visible' : 'hidden'}"></mat-spinner></div>
-            <button type="submit" class="flex-2 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-base" [ngClass]="{'opacity-50 cursor-not-allowed':!f.valid || isAddingTelescope}" [disabled]="!f.valid">
-                    Add it ! 
-            </button>
-            <div class="flex-1"><mat-spinner diameter="15" class="ml-3 mt-1" mode="determinate" [value]="uploadProgress" color="accent" [ngStyle]="{'visibility':isAddingTelescope ? 'visible' : 'hidden'}"></mat-spinner><div class="flex mx-auto ml-3 text-xs" [ngStyle]="{'visibility':isAddingTelescope ? 'visible' : 'hidden'}">{{ uploadProgress }} %</div></div>
-        </div>
-        
-    </div>
-</form>
 
-<!-- formulaire de création de jumelles -->
-<form (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf="type==='binoculars'"> 
-    <div class="mr-5 sm:w-1/2">
 
-        <!-- titre -->
-        <img src="../../../assets/Icons/equipment/binoculars.png"  class="ml-5 w-8 h-8 float-left mr-2">
-        <div class="text-2xl h-8 pt-1 text-white mb-5">Add binoculars
-            <!-- bouton retour-->
-            <div class="inline-block">
-                <button class="text-white bg-blue-600 border-0 py-1 px-1 ml-2 focus:outline-none hover:bg-blue-900 rounded text-sm" (click)="onReturn()"><img src="../../../../assets/Icons/general-icons/back.png"  class="w-4 h-4"></button>
-            </div>
-        </div>
 
-    
-        <!-- Name -->
-        <div class="inline-block px-3 py-4  sm:w-1/3 w-1/2">
-            <div class="sm:text-sm text-xs mb-2">Name *</div>
-            <input required name="name" ngModel class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="text">
-        </div>
 
-        <!-- Manufacturer -->
-        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2 ">
-            <div class="sm:text-sm text-xs mb-2">Manufacturer</div>
-            <input name="manufacturer" ngModel class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="text">
-        </div>
-
+        <!-- BINOCULARS -->
         <!-- Diameter -->
-        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2 ">
+        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2 " *ngIf="type==='binoculars'">
             <div class="sm:text-sm text-xs mb-2">Diameter (mm) *</div>
-            <input required [(ngModel)]="diameter" name="diameter" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
+            <input required name="binocularsDiameter" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
         </div>
 
         
         <!-- Magnification -->
-        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2">
+        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2" *ngIf="type==='binoculars'">
             <div class="sm:text-sm text-xs mb-2">Magnification *</div>
-            <input required [(ngModel)]="focal" name="magnification" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
+            <input required name="binocularsMagnification" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
         </div>
 
         <!-- AFOV -->
-        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2">
+        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2" *ngIf="type==='binoculars'">
             <div class="sm:text-sm text-xs mb-2">AFOV</div>
-            <input required [(ngModel)]="diameter" name="afov" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
+            <input name="binocularsAFOV" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
         </div>
 
-
-        <!-- Ajout d'images -->
+        <!-- Common Ajout d'images -->
         <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2">
             <div class="sm:text-sm text-xs mb-2 italic">{{ getNumberSelectedImages() }}</div>
             <input ngModel #hiddenfileinput name="image" style="display: none;" type="file" multiple (change)="chooseFile($event.target.files)" accept="image/x-png,image/gif,image/jpeg,image/ico">
@@ -196,22 +101,21 @@
         </div>
 
     
-        <!-- description -->
+        <!-- Common description -->
         <div class="px-3 py-4 w-full">
             <div class="sm:text-sm text-xs mb-2">Description</div>
-            <textarea name="description" ngModel class="w-full bg-gray-800 rounded border border-gray-700 text-white focus:outline-none h-24 focus:border-indigo-500 text-xs px-4 py-2 resize-none block"></textarea>
+            <textarea required name="description" ngModel class="w-full bg-gray-800 rounded border border-gray-700 text-white focus:outline-none h-24 focus:border-indigo-500 text-xs px-4 py-2 resize-none block"></textarea>
         </div>
 
         <br>
 
-
-        <!-- button -->
+        <!-- Common button -->
         <div class="px-3 py-4 w-full flex flex-wrap">
             <div class="flex-1"><mat-spinner diameter="15" class="mt-2 flex mx-auto"  [ngStyle]="{'visibility':false ? 'visible' : 'hidden'}"></mat-spinner></div>
-            <button type="submit" class="flex-2 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-base" [ngClass]="{'opacity-50 cursor-not-allowed':!f.valid || isAddingTelescope}" [disabled]="!f.valid">
+            <button type="submit" class="flex-2 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-base" [ngClass]="{'opacity-50 cursor-not-allowed':!f.valid || isAddingItem}" [disabled]="!f.valid">
                     Add it ! 
             </button>
-            <div class="flex-1"><mat-spinner diameter="15" class="ml-3 mt-1" mode="determinate" [value]="uploadProgress" color="accent" [ngStyle]="{'visibility':isAddingTelescope ? 'visible' : 'hidden'}"></mat-spinner><div class="flex mx-auto ml-3 text-xs" [ngStyle]="{'visibility':isAddingTelescope ? 'visible' : 'hidden'}">{{ uploadProgress }} %</div></div>
+            <div class="flex-1"><mat-spinner diameter="15" class="ml-3 mt-1" mode="determinate" [value]="uploadProgress" color="accent" [ngStyle]="{'visibility':isAddingItem ? 'visible' : 'hidden'}"></mat-spinner><div class="flex mx-auto ml-3 text-xs" [ngStyle]="{'visibility':isAddingItem ? 'visible' : 'hidden'}">{{ uploadProgress }} %</div></div>
         </div>
         
     </div>

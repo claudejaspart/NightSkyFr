@@ -22,16 +22,29 @@ export class ItemsNewComponent implements OnInit {
   itemsNewFields : any;
   type : string;
 
-  diameter : number ;
-  focal : number ;
-  fdratio : number;
-  isAddingTelescope : boolean = false; 
+  // common variables
+  isAddingItem : boolean = false; 
   numberSelectedImages : number = 0;
   selectedFiles : File[] = [];
   totalSelectedFileSize  = 0.0;
   units : string = "";
   uploadProgress : Number = 0;
   creationFinished : boolean = false;
+
+  // telescope variables
+  telescopeDiameter : number ;
+  telescopeFocal : number ;
+  telescopeFDRatio : number;
+
+  // eyepiece variables
+  eyepieceFocal : Number;
+  eyepieceAFOV : Number;
+
+  // binoculars variables
+  binocularsDiameter: Number;
+  binocularsMagnification : Number;
+  binocularsAFOV : Number;
+
 
 
   ngOnInit(): void 
@@ -49,9 +62,9 @@ export class ItemsNewComponent implements OnInit {
   // autocomplétion du rapport f/d
   calculateRatio()
   {
-    if (this.diameter > 0 && this.focal > 0)
+    if (this.telescopeDiameter > 0 && this.telescopeFocal > 0)
     {
-      this.fdratio = Math.round(10*this.focal/this.diameter)/10;
+      this.telescopeFDRatio = Math.round(10*this.telescopeFocal/this.telescopeDiameter)/10;
     }
   }
 
@@ -86,7 +99,7 @@ export class ItemsNewComponent implements OnInit {
   onSubmit(form : NgForm)
   {
       // variable de traitement
-      this.isAddingTelescope = true;
+      this.isAddingItem = true;
 
       // variable formData
       const fd = new FormData();
@@ -94,8 +107,8 @@ export class ItemsNewComponent implements OnInit {
       // add core data telescope
       fd.append('name', form.value.name);
       fd.append('aperture', form.value.aperture);
-      fd.append('focal', form.value.focal);
-      fd.append('fdratio', form.value.fdratio);
+      fd.append('focal', form.value.telescopeFocal);
+      fd.append('fdratio', form.value.telescopeFDRatio);
       fd.append('manufacturer', form.value.manufacturer);
       fd.append('description', form.value.description);
       fd.append('author', 'Claude');
@@ -141,9 +154,9 @@ export class ItemsNewComponent implements OnInit {
                             this.creationFinished = true;                                                                             
                           });
 
-                          if (this.isAddingTelescope === true)
+                          if (this.isAddingItem === true)
                           {
-                            this.isAddingTelescope = false;
+                            this.isAddingItem = false;
                             this.onReturn();
                           }                          
 
@@ -164,7 +177,7 @@ export class ItemsNewComponent implements OnInit {
                           // actions lorsque la notif se ferme
                           snackBarRef.afterDismissed().subscribe(null, null, () => 
                           {
-                            this.isAddingTelescope = false;
+                            this.isAddingItem = false;
                           }); 
 
                         }
