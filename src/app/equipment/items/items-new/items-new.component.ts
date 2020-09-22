@@ -23,6 +23,7 @@ export class ItemsNewComponent implements OnInit {
   type : string;
 
   // common variables
+  name : string = "";
   isAddingItem : boolean = false; 
   numberSelectedImages : number = 0;
   selectedFiles : File[] = [];
@@ -94,6 +95,26 @@ export class ItemsNewComponent implements OnInit {
       this.units = "Mb";
       this.totalSelectedFileSize = Math.round(100 * this.totalSelectedFileSize / Math.pow(1024,2))/100;
     }
+  }
+
+  checkValidForm() : boolean
+  {
+    let isFormValid = false;
+
+    switch(this.type)
+    {
+      case 'telescope' : 
+        isFormValid = (this.name.length && this.telescopeFocal && this.telescopeDiameter && this.telescopeFDRatio ? true : false);
+        break;
+      case 'eyepiece' :
+        isFormValid = (this.name.length && this.eyepieceFocal ? true : false);
+        break;
+      case 'binoculars' :
+        isFormValid =  (this.name.length && this.binocularsDiameter && this.binocularsMagnification? true : false);
+        break;
+    }
+
+    return isFormValid;
   }
 
   onSubmit(form : NgForm)
