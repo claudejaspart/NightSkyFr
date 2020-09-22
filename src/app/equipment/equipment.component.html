@@ -7,11 +7,11 @@
     <!-- contenu -->
     <div class="inline-block w-screen text-sm text-white pl-2 p-8">
 
-        <app-items [type]="'telescope'" *ngIf="displayStatus==='all' || displayStatus==='telescope'"></app-items>
+        <app-items [type]="'telescope'"     *ngIf="displayStatus==='all' || displayStatus==='telescope'"></app-items>
         
-        <app-items [type]="'eyepiece'" *ngIf="displayStatus==='all' || displayStatus==='eyepiece'"></app-items>
+        <app-items [type]="'eyepiece'"      *ngIf="displayStatus==='all' || displayStatus==='eyepiece'"></app-items>
         
-        <app-items [type]="'binoculars'" *ngIf="displayStatus==='all' || displayStatus==='binoculars'"></app-items>
+        <app-items [type]="'binoculars'"    *ngIf="displayStatus==='all' || displayStatus==='binoculars'"></app-items>
        
 
     </div>

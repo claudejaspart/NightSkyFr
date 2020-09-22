@@ -27,11 +27,15 @@
             <input name="manufacturer" ngModel class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="text">
         </div>
 
-        <!-- Telescope data -->
+
+
+        <!-- ************************************************************************   -->
+        <!-- TELESCOPE DATA                                                             -->
+        <!-- ************************************************************************   -->
         <!-- Diameter -->
         <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2" *ngIf="type==='telescope'">
             <div class="sm:text-sm text-xs mb-2">Aperture (mm) *</div>
-            <input  [(ngModel)]="telescopeDiameter" name="telescopeAperture" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
+            <input  [(ngModel)]="telescopeDiameter" name="telescopeDiameter" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
         </div>
 
         
@@ -53,8 +57,9 @@
 
 
 
-
-        <!-- EYEPIECE -->
+        <!-- ************************************************************************   -->
+        <!-- EYEPIECE                                                                   -->
+        <!-- ************************************************************************   -->
         <!-- Focal length * -->
         <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2" *ngIf="type==='eyepiece'">
             <div class="sm:text-sm text-xs mb-2">Focal (mm) *</div>
@@ -72,8 +77,9 @@
 
 
 
-
-        <!-- BINOCULARS -->
+        <!-- ************************************************************************   -->
+        <!-- BINOCULARS                                                                 -->
+        <!-- ************************************************************************   -->
         <!-- Diameter -->
         <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2 " *ngIf="type==='binoculars'">
             <div class="sm:text-sm text-xs mb-2">Diameter (mm) *</div>
@@ -93,6 +99,10 @@
             <input name="binocularsAFOV" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
         </div>
 
+
+
+
+        <!-- ************************************************************************ -->
         <!-- Common Ajout d'images -->
         <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2">
             <div class="sm:text-sm text-xs mb-2 italic">{{ getNumberSelectedImages() }}</div>

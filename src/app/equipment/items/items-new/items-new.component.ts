@@ -30,7 +30,7 @@ export class ItemsNewComponent implements OnInit {
   totalSelectedFileSize  = 0.0;
   units : string = "";
   uploadProgress : Number = 0;
-  creationFinished : boolean = false;
+  
 
   // telescope variables
   telescopeDiameter : number ;
@@ -56,6 +56,7 @@ export class ItemsNewComponent implements OnInit {
   // returning to the list of items
   onReturn()
   {
+    this.itemsStateService.setItemWasCreated();
     this.itemsStateService.setState('list');
     this.displayService.setDisplayStatus('all');
   }
@@ -68,6 +69,9 @@ export class ItemsNewComponent implements OnInit {
       this.telescopeFDRatio = Math.round(10*this.telescopeFocal/this.telescopeDiameter)/10;
     }
   }
+
+
+
 
   chooseFile(file)
   {
@@ -97,6 +101,19 @@ export class ItemsNewComponent implements OnInit {
     }
   }
 
+
+
+  getNumberSelectedImages()
+  {
+    if (this.numberSelectedImages === 0)
+      return "";
+    else
+      return `${this.numberSelectedImages} selected - ${this.totalSelectedFileSize} ${this.units}`;
+  }
+
+
+
+
   checkValidForm() : boolean
   {
     let isFormValid = false;
@@ -119,6 +136,8 @@ export class ItemsNewComponent implements OnInit {
 
   onSubmit(form : NgForm)
   {
+    if (this.checkValidForm())
+    {
       // variable de traitement
       this.isAddingItem = true;
 
@@ -127,18 +146,33 @@ export class ItemsNewComponent implements OnInit {
 
       // add core data telescope
       fd.append('name', form.value.name);
-      fd.append('aperture', form.value.aperture);
-      fd.append('focal', form.value.telescopeFocal);
-      fd.append('fdratio', form.value.telescopeFDRatio);
       fd.append('manufacturer', form.value.manufacturer);
       fd.append('description', form.value.description);
-      fd.append('author', 'Claude');
+      fd.append('author', '');
+
+      switch(this.type)
+      {
+        case 'telescope':
+          fd.append('diameter', form.value.telescopeDiameter);
+          fd.append('focal', form.value.telescopeFocal);
+          fd.append('fdratio', form.value.telescopeFDRatio);
+          break;
+        case 'eyepiece':
+          fd.append('focal', form.value.eyepieceFocal);
+          fd.append('afov', form.value.eyepieceAFOV !== undefined ? form.value.eyepieceAFOV : 0);
+          break;
+        case 'binoculars':
+          fd.append('diameter', form.value.binocularsDiameter);
+          fd.append('magnification', form.value.binocularsMagnification);
+          fd.append('afov', form.value.binocularsAFOV !== undefined ? form.value.binocularsAFOV : 0);
+          break;
+      }
 
       // ajout des images
       this.selectedFiles.forEach( selectedFile => fd.append('image', selectedFile, selectedFile.name));
 
       // envoi de la requete http
-      this.http.post( "/addTelescope" , 
+      this.http.post( "/add" + this.type , 
                       fd, 
                       {
                         responseType: 'text',
@@ -155,25 +189,12 @@ export class ItemsNewComponent implements OnInit {
                       }
                       else if (event.type === HttpEventType.Response)
                       {
-                        if (event.body === "SUCCESS-TELESCOPE-DB-INS")
+                        if (event.body === "SUCCESS-DB-INS")
                         { 
-                          // fin upload
-                          this.uploadProgress = 100;  
-                          const that = this;  
-                          
-                          // message de succès
-                          let snackBarRef = this._snackBar.open('Telescope created !', "Success !", 
-                                            {
-                                              duration: 1500,
-                                              horizontalPosition:  'center',
-                                              panelClass: 'snackbar'                                              
-                                            });
-                              
-                          // actions lorsque la notif se ferme      
-                          snackBarRef.afterDismissed().subscribe(null, null, () => 
-                          {
-                            this.creationFinished = true;                                                                             
-                          });
+                          // fin upload - message de succès 
+                          this.uploadProgress = 100;   
+                          let snackBarRef = this._snackBar.open(this.type + ' created !', "Success !", { duration: 1500,horizontalPosition: 'center',panelClass: 'snackbar'});
+                          snackBarRef.afterDismissed().subscribe(null, null, () => {});
 
                           if (this.isAddingItem === true)
                           {
@@ -182,38 +203,17 @@ export class ItemsNewComponent implements OnInit {
                           }                          
 
                         }
-                        else if (event.body === "FAIL-TELESCOPE-DB-INS" || event.body === "FAIL-IMAGE-DB-INS")
+                        else if (event.body === "FAIL-DB-INS" || event.body === "FAIL-IMAGE-DB-INS")
                         {
-                          // fin upload
+                          // fin upload avec message d'erreur
                           this.uploadProgress = 100; 
-
-                          // message d'erreur 
-                          let snackBarRef = this._snackBar.open('An error occured !', "Error !", 
-                          {
-                            duration: 1500,
-                            horizontalPosition:  'center',
-                            panelClass: 'snackbar'                                              
-                          });  
-
-                          // actions lorsque la notif se ferme
-                          snackBarRef.afterDismissed().subscribe(null, null, () => 
-                          {
-                            this.isAddingItem = false;
-                          }); 
-
+                          let snackBarRef = this._snackBar.open(event.body, "Error !", { duration: 1500, horizontalPosition:  'center', panelClass: 'snackbar'});  
+                          snackBarRef.afterDismissed().subscribe(null, null, () => this.isAddingItem = false); 
                         }
                       }
                     });
+    }
+    
   }
-
-
-  getNumberSelectedImages()
-  {
-    if (this.numberSelectedImages === 0)
-      return "";
-    else
-      return `${this.numberSelectedImages} selected - ${this.totalSelectedFileSize} ${this.units}`;
-  }
-
 
 }
