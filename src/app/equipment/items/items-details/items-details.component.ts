@@ -27,6 +27,13 @@ export class ItemsDetailsComponent implements OnInit
   ngOnInit(): void 
   {
     this.selectedItem = this.itemsStateService.getSelectedItem();
+
+    // cleanup des champs description et manufacturer si vide
+    if (!this.selectedItem.description.length)
+      this.selectedItem.description = "None given"
+
+    if (!this.selectedItem.manufacturer.length)
+      this.selectedItem.manufacturer = "Unknown"
     
     // initialisation en fonction du type;
     switch(this.type)
@@ -52,12 +59,14 @@ export class ItemsDetailsComponent implements OnInit
     this.displayService.setDisplayStatus('all');
   }
 
+
   fetchItemImages()
   {
     let url = `/EquipmentImages?type=${this.type}&id=${this.selectedItem.id}`;
     this.http.get(url).subscribe(retrievedList => 
       {
         this.itemImages = retrievedList;
+        console.log(this.itemImages);
         this.createImageObject();
       });
   }
@@ -89,11 +98,50 @@ export class ItemsDetailsComponent implements OnInit
     {
       // delete message
       let snackBarRef = this._snackBar.open("Delete image ?", "Yes !", { duration: 2000, horizontalPosition:  'center'});  
-      snackBarRef.onAction().subscribe(() => {
-        console.log('The snack-bar action was triggered!');
+      snackBarRef.onAction().subscribe(() => 
+      {
+        this.deleteItemSpecificImage(this.imageIndex);
       });
       snackBarRef.afterDismissed().subscribe(null, null, () => {});
     }
+  }
+
+  deleteItemSpecificImage(imageId:number)
+  {
+    let url = `/DeleteEquipmentImage?type=${this.type}&id=${this.itemImages[this.imageIndex].id}`;
+    console.log(url);
+    this.http.delete(url,{responseType: 'text'}).subscribe(event => 
+      {
+        if (event.includes('SUCCESS'))
+          this.displaySnackbarMessage("Image deleted !","Success !",2000);
+        else
+          this.displaySnackbarMessage(event,"Error !",3000);
+
+        // rafraichissement des images
+        this.fetchItemImages();
+      });
+  }
+
+
+  deleteAllImages()
+  {
+        // delete message
+        let snackBarRef = this._snackBar.open("Delete all images ?", "Yes !", { duration: 2000, horizontalPosition:  'center'});  
+        snackBarRef.onAction().subscribe(() => {
+          
+        });
+        snackBarRef.afterDismissed().subscribe(null, null, () => {});
+  }
+
+
+
+  deleteItemAllImages()
+  {
+    let url = `/DeleteAllEquipmentImages?type=${this.type}`;
+    this.http.delete(url).subscribe(answer => 
+      {
+        // todo
+      });
   }
 
   getIndex(index : number)
@@ -105,6 +153,12 @@ export class ItemsDetailsComponent implements OnInit
   disableDeleteImage()
   {
     this.deleteImageEnabled = false;
+  }
+
+  displaySnackbarMessage(message:string, actionMessage: string, msDuration: number)
+  {
+        // delete message
+        let snackBarRef = this._snackBar.open(message, actionMessage, { duration: msDuration, horizontalPosition:  'center'});  
   }
 
 

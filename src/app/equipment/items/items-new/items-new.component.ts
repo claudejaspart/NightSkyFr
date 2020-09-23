@@ -193,7 +193,7 @@ export class ItemsNewComponent implements OnInit {
                         { 
                           // fin upload - message de succès 
                           this.uploadProgress = 100;   
-                          let snackBarRef = this._snackBar.open(this.type + ' created !', "Success !", { duration: 1500,horizontalPosition: 'center',panelClass: 'snackbar'});
+                          let snackBarRef = this._snackBar.open(this.type + ' created !', "Success !", { duration: 1500, horizontalPosition: 'center',panelClass: 'snackbar'});
                           snackBarRef.afterDismissed().subscribe(null, null, () => {});
 
                           if (this.isAddingItem === true)
