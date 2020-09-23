@@ -26,7 +26,6 @@ export class ItemsComponent implements OnInit
   ngDoCheck(): void
   {
     this.currentItemState = this.itemState.getState();
-    this.currentSelectedItemIndex = this.itemState.getSelectedItemIndex();
   }
 
 }

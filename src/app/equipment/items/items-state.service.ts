@@ -12,9 +12,8 @@ export class ItemsStateService {
   // details : view details of a given item 
   // edit : edit details of a given item
   // create : create a new item
-  readonly  NONE_SELECTED : number = -1;
   public state = new BehaviorSubject<string>('list');
-  public selectedItemIndex = new BehaviorSubject<number>(this.NONE_SELECTED);
+  public selectedItem : any;
   public itemCreated : boolean = false;
   public itemModified : boolean = false;
 
@@ -38,19 +37,14 @@ export class ItemsStateService {
   // states on item selection
   // ------------------------
 
-  setSelectedItemIndex(index : number)
+  setSelectedItem(item : any)
   {
-    this.selectedItemIndex.next(index);
+    this.selectedItem = item;
   }
 
-  getSelectedItemIndex(): number
+  getSelectedItem(): any
   {
-    return this.selectedItemIndex.value;
-  }
-
-  resetSelectedItemIndex()
-  {
-    this.selectedItemIndex.next(this.NONE_SELECTED);
+    return this.selectedItem;
   }
 
 

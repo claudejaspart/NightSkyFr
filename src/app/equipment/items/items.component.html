@@ -1,4 +1,4 @@
 <app-items-list     [type]="type"                   *ngIf="currentItemState==='list'"></app-items-list>
-<app-items-details  [selectedItem]="selectedItem"   *ngIf="currentItemState==='details'"></app-items-details>
+<app-items-details  [type]="type"                   *ngIf="currentItemState==='details'"></app-items-details>
 <app-items-new                                      *ngIf="currentItemState==='create'"></app-items-new> 
 <br><br><br>

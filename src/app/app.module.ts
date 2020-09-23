@@ -25,6 +25,7 @@ import { ItemsComponent } from './equipment/items/items.component';
 import { ItemsListComponent } from './equipment/items/items-list/items-list.component';
 import { ItemsDetailsComponent } from './equipment/items/items-details/items-details.component';
 import { ItemsNewComponent } from './equipment/items/items-new/items-new.component';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 
 
@@ -57,7 +58,8 @@ import { ItemsNewComponent } from './equipment/items/items-new/items-new.compone
     MatButtonModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgImageSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
