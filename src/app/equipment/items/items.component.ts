@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ItemsStateService } from './items-state.service';
-import { ItemsFetchService } from './items-fetch.service'
 
 @Component({
   selector: 'app-items',
@@ -16,7 +15,7 @@ export class ItemsComponent implements OnInit
   newItemFields : any;
   detailsItemFields : any;
 
-  constructor(private itemState : ItemsStateService, private itemsFetchService : ItemsFetchService) { }
+  constructor(private itemState : ItemsStateService) { }
 
   ngOnInit(): void 
   {

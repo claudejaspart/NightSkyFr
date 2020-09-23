@@ -88,8 +88,8 @@ export class ItemsListComponent implements OnInit
 
   fetchItems(type : string)
   {
-    let url = type + (type !== 'binoculars' ? "s" : "");    
-    this.http.get('/' + url).subscribe(retrievedList => this.itemsData = retrievedList);
+    let url = "/" + type + (type !== 'binoculars' ? "s" : "");    
+    this.http.get(url).subscribe(retrievedList => this.itemsData = retrievedList);
   }
 
 }
