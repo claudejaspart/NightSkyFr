@@ -63,16 +63,18 @@ export class ItemsDetailsComponent implements OnInit
   fetchItemImages()
   {
     let url = `/EquipmentImages?type=${this.type}&id=${this.selectedItem.id}`;
+    console.log("calling fetchImages");
     this.http.get(url).subscribe(retrievedList => 
       {
         this.itemImages = retrievedList;
-        console.log(this.itemImages);
+        console.log(retrievedList);
         this.createImageObject();
       });
   }
 
   createImageObject()
   {
+      console.log("createImageObject");
       if(this.itemImages != undefined)
       {
         // reset image
@@ -88,6 +90,10 @@ export class ItemsDetailsComponent implements OnInit
             }
           );
         }
+      }
+      else
+      {
+        this.imageObject = undefined;
       }
   }
 
@@ -128,7 +134,7 @@ export class ItemsDetailsComponent implements OnInit
         // delete message
         let snackBarRef = this._snackBar.open("Delete all images ?", "Yes !", { duration: 2000, horizontalPosition:  'center'});  
         snackBarRef.onAction().subscribe(() => {
-          
+          this.deleteItemAllImages();        
         });
         snackBarRef.afterDismissed().subscribe(null, null, () => {});
   }
@@ -137,10 +143,16 @@ export class ItemsDetailsComponent implements OnInit
 
   deleteItemAllImages()
   {
-    let url = `/DeleteAllEquipmentImages?type=${this.type}`;
-    this.http.delete(url).subscribe(answer => 
+    let url = `/DeleteAllEquipmentImages?type=${this.type}&itemId=${this.selectedItem.id}`;
+    this.http.delete(url,{responseType: 'text'}).subscribe(event => 
       {
-        // todo
+        if (event.includes('SUCCESS'))
+          this.displaySnackbarMessage("Images deleted !","Success !",2000);
+        else
+          this.displaySnackbarMessage(event,"Error !",3000);
+
+        // rafraichissement des images
+        this.fetchItemImages();
       });
   }
 
