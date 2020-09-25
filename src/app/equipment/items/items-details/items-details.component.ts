@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DisplayService } from '../../display.service';
 import { ItemsStateService } from '../items-state.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -19,7 +19,12 @@ export class ItemsDetailsComponent implements OnInit
   imageIndex : number = -1;
   iconUrl : string;
   noImage : boolean = true;
-  numberThumbs = 15;
+  numberThumbs : number = 15;
+  isAddingImage : boolean = false;
+
+  // image variables
+  selectedFile : File;
+  uploadProgress : Number = 100;
 
   constructor(  private displayService : DisplayService, 
                 private itemsStateService : ItemsStateService, 
@@ -93,8 +98,7 @@ export class ItemsDetailsComponent implements OnInit
         }
 
         // si le nombre d'images est inférieure à x, on rajoute des images vides
-        let numberImagesToAdd = this.itemImages.length - this.numberThumbs;
-        console.log(numberImagesToAdd)
+        let numberImagesToAdd = this.numberThumbs - this.itemImages.length;        
         if ( numberImagesToAdd > 0)
         {
             for (let index = 0; index < numberImagesToAdd; index++)
@@ -119,10 +123,12 @@ export class ItemsDetailsComponent implements OnInit
       }
   }
 
+  // *************************************
   // gestion de la suppression d'une image
+  // *************************************
   deleteImage()
   {
-    if (this.deleteImageEnabled && !this.noImage)
+    if (this.deleteImageEnabled && !this.noImage && this.imageIndex < this.itemImages.length)
     {
       // delete message
       let snackBarRef = this._snackBar.open("Delete image ?", "Yes !", { duration: 2000, horizontalPosition:  'center'});  
@@ -177,6 +183,49 @@ export class ItemsDetailsComponent implements OnInit
         this.fetchItemImages();
       });
   }
+
+  // ***************************
+  // Selection des images
+  // ***************************
+  chooseFile(file)
+  {
+    this.selectedFile = file[0];    
+    this.onImageUpload();
+  }
+
+  onImageUpload()
+  {
+      
+      // variable formData
+      const fd = new FormData();
+      this.isAddingImage = true
+
+      // ajout des images
+      fd.append('image', this.selectedFile, this.selectedFile.name);
+
+      // envoi de la requete http
+      this.http.post( `addEquipmentImage?type=${this.type}&itemId=${this.selectedItem.id}&itemName=${this.selectedItem.name}`, 
+                      fd, 
+                      {responseType: 'text', reportProgress: true, observe: 'events'}
+                    ).subscribe(
+                    event => 
+                    {
+                      if (event.type === HttpEventType.UploadProgress)
+                      {
+                        this.uploadProgress = Math.round(100 * event.loaded / event.total);
+                      }
+                      else if (event.type === HttpEventType.Response)
+                      {
+                        if (event.body.includes('SUCCESS') && this.uploadProgress === 100)
+                        {
+                          this.fetchItemImages();
+                          setTimeout(()=>this.isAddingImage = false, 1500);
+                        }
+                        else if (event.body.includes('FAIL'))
+                          this._snackBar.open(event.body, "Error !", { duration: 1500, horizontalPosition:  'center'});  
+                      }
+                    });
+    }
 
  
 

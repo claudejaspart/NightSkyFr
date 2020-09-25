@@ -28,8 +28,8 @@ export class ItemsNewComponent implements OnInit {
   numberSelectedImages : number = 0;
   selectedFiles : File[] = [];
   totalSelectedFileSize  = 0.0;
-  units : string = "";
   uploadProgress : Number = 0;
+  units : string = "";
   
 
   // telescope variables
@@ -70,11 +70,9 @@ export class ItemsNewComponent implements OnInit {
     }
   }
 
-
-
-
   chooseFile(file)
   {
+    console.log(file);
     this.numberSelectedImages = file.length;
     this.totalSelectedFileSize = 0.0;
 

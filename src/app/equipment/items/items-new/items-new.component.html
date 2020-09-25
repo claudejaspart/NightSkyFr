@@ -125,7 +125,10 @@
             <button type="submit" class="flex-2 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-base" [ngClass]="{'opacity-50 cursor-not-allowed': !checkValidForm() || isAddingItem}" [disabled]="!f.valid">
                     Add it ! 
             </button>
-            <div class="flex-1"><mat-spinner diameter="15" class="ml-3 mt-1" mode="determinate" [value]="uploadProgress" color="accent" [ngStyle]="{'visibility':isAddingItem ? 'visible' : 'hidden'}"></mat-spinner><div class="flex mx-auto ml-3 text-xs" [ngStyle]="{'visibility':isAddingItem ? 'visible' : 'hidden'}">{{ uploadProgress }} %</div></div>
+            <div class="flex-1">
+                <mat-spinner diameter="15" class="ml-3 mt-1" mode="determinate" [value]="uploadProgress" color="accent" [ngStyle]="{'visibility':isAddingItem ? 'visible' : 'hidden'}"></mat-spinner>
+                <div class="flex mx-auto ml-3 text-xs" [ngStyle]="{'visibility':isAddingItem ? 'visible' : 'hidden'}">{{ uploadProgress }} %</div>
+            </div>
         </div>
         
     </div>
