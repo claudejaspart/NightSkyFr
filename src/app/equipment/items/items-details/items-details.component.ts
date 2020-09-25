@@ -14,6 +14,7 @@ export class ItemsDetailsComponent implements OnInit
   @Input() type : string;
   selectedItem : any;
   itemImages : any;
+  numberImages : number = 0;
   imageObject : Array<Object>;
   deleteImageEnabled = false;
   imageIndex : number = -1;
@@ -70,25 +71,24 @@ export class ItemsDetailsComponent implements OnInit
   fetchItemImages()
   {
     let url = `/EquipmentImages?type=${this.type}&id=${this.selectedItem.id}`;
-    console.log("calling fetchImages");
     this.http.get(url).subscribe(retrievedList => 
       {
         this.itemImages = retrievedList;
-        console.log(retrievedList);
         this.createImageObject();
       });
   }
 
   createImageObject()
   {
-      if(this.itemImages.length > 0)
+      if(this.itemImages != undefined && this.itemImages.length > 0)
       {
         // reset image
         this.noImage = false;
         this.imageObject = new Array();
+        this.numberImages = this.itemImages.length;
 
         // boucle sur chaque ligne de retour de la requete
-        for(let index=0; index < this.itemImages.length; index++)
+        for(let index=0; index < this.numberImages; index++)
         {
           this.imageObject.push(
             {
@@ -114,6 +114,7 @@ export class ItemsDetailsComponent implements OnInit
       {
         this.imageObject = undefined;
         this.imageObject = new Array();
+        this.numberImages = 0;
         for (let index=0; index<this.numberThumbs;index++)
           this.imageObject.push(
           {
@@ -143,7 +144,6 @@ export class ItemsDetailsComponent implements OnInit
   deleteItemSpecificImage(imageId:number)
   {
     let url = `/DeleteEquipmentImage?type=${this.type}&id=${this.itemImages[this.imageIndex].id}`;
-    console.log(url);
     this.http.delete(url,{responseType: 'text'}).subscribe(event => 
       {
         if (event.includes('SUCCESS'))
