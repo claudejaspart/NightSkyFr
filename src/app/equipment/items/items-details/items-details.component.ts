@@ -18,6 +18,8 @@ export class ItemsDetailsComponent implements OnInit
   deleteImageEnabled = false;
   imageIndex : number = -1;
   iconUrl : string;
+  noImage : boolean = true;
+  numberThumbs = 15;
 
   constructor(  private displayService : DisplayService, 
                 private itemsStateService : ItemsStateService, 
@@ -74,10 +76,10 @@ export class ItemsDetailsComponent implements OnInit
 
   createImageObject()
   {
-      console.log("createImageObject");
-      if(this.itemImages != undefined)
+      if(this.itemImages.length > 0)
       {
         // reset image
+        this.noImage = false;
         this.imageObject = new Array();
 
         // boucle sur chaque ligne de retour de la requete
@@ -87,20 +89,40 @@ export class ItemsDetailsComponent implements OnInit
             {
               image: this.itemImages[index].path.replace(/\\/g, '/'),
               thumbImage : this.itemImages[index].path.replace(/\\/g, '/')
-            }
-          );
+            });
         }
+
+        // si le nombre d'images est inférieure à x, on rajoute des images vides
+        let numberImagesToAdd = this.itemImages.length - this.numberThumbs;
+        console.log(numberImagesToAdd)
+        if ( numberImagesToAdd > 0)
+        {
+            for (let index = 0; index < numberImagesToAdd; index++)
+              this.imageObject.push(
+                {
+                  Image : "../../../../assets/Icons/general-icons/NoImage.svg",
+                  thumbImage : "../../../../assets/Icons/general-icons/NoImage.svg"
+                });
+        }
+        
       }
       else
       {
         this.imageObject = undefined;
+        this.imageObject = new Array();
+        for (let index=0; index<this.numberThumbs;index++)
+          this.imageObject.push(
+          {
+            Image : "../../../../assets/Icons/general-icons/NoImage.svg",
+            thumbImage : "../../../../assets/Icons/general-icons/NoImage.svg"
+          });
       }
   }
 
   // gestion de la suppression d'une image
   deleteImage()
   {
-    if (this.deleteImageEnabled)
+    if (this.deleteImageEnabled && !this.noImage)
     {
       // delete message
       let snackBarRef = this._snackBar.open("Delete image ?", "Yes !", { duration: 2000, horizontalPosition:  'center'});  
@@ -155,6 +177,8 @@ export class ItemsDetailsComponent implements OnInit
         this.fetchItemImages();
       });
   }
+
+ 
 
   getIndex(index : number)
   {
