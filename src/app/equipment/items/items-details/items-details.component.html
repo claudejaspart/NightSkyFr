@@ -199,9 +199,24 @@
                         <div class="sm:w-10 sm:h-10 w-5 h-5 sm:text-lg text-xs inline-flex items-center justify-center rounded-full bg-gray-800 text-teal-500 sm:mb-4 mb-2">I</div>
                         <h2 class="inline-block sm:text-base text-xs text-teal-500 font-medium title-font sm:mb-2 sm:ml-5 mb-1 ml-2">Images [ {{numberImages}} ]</h2>
                         <div class="border-t border-gray-800 w-full h-1 mb-3">&nbsp;</div>
-                        <ng-image-slider [images]="imageObject" [slideImage]="2" [animationSpeed]= "0.3" [imagePopup]="false" [imageSize]="{width: '100px', height: '80px'}" *ngIf="noImage" #nav></ng-image-slider>
-                        <ng-image-slider [images]="imageObject" [slideImage]="2" [animationSpeed]= "0.3" [imageSize]="{width: '100px', height: '80px'}" *ngIf="!noImage" (lightboxClose)='deleteImage()' (imageClick)='getIndex($event)' (lightboxArrowClick)='disableDeleteImage()' #nav></ng-image-slider>
-                    
+                        <!-- slider image-->
+                        <ng-image-slider [images]="imageObject" [showArrow]="false" [slideImage]="2" [animationSpeed]= "0.3" [imagePopup]="false" [imageSize]="{width: '100px', height: '80px'}" *ngIf="noImage" #nav></ng-image-slider>
+                        <ng-image-slider [images]="imageObject" [showArrow]="false" [slideImage]="2" [animationSpeed]= "0.3" [imageSize]="{width: '100px', height: '80px'}" *ngIf="!noImage" (lightboxClose)='deleteImage()' (imageClick)='getIndex($event)' (lightboxArrowClick)='disableDeleteImage()' #nav></ng-image-slider>
+        
+                        <!-- bouton de navigation -->
+                        <div class="flex content-center flex-wrap mt-3 h-6">
+                            <div class="w-1/2  pr-8">
+                                <button class="ml-4 float-right text-white border-0 py-1 px-1 focus:outline-none opacity-50 hover:opacity-100 rounded text-sm" (click)="prevImageClick()">
+                                    <img class="w-6 h-6 " src="../../../../assets/Icons/general-icons/prev.png" >
+                                </button>
+                            </div>
+                            <div class="w-1/2  pl-8">
+                                <button class="ml-4 float-left text-white border-0 py-1 px-1 focus:outline-none opacity-50 hover:opacity-100 rounded text-sm" (click)="nextImageClick()">
+                                    <img class="w-6 h-6 " src="../../../../assets/Icons/general-icons/next.png">
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 

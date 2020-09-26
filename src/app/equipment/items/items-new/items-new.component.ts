@@ -191,8 +191,8 @@ export class ItemsNewComponent implements OnInit {
                         { 
                           // fin upload - message de succès 
                           this.uploadProgress = 100;   
-                          let snackBarRef = this._snackBar.open(this.type + ' created !', "Success !", { duration: 1500, horizontalPosition: 'center',panelClass: 'snackbar'});
-                          snackBarRef.afterDismissed().subscribe(null, null, () => {});
+                          let snackBarRef = this._snackBar.open(this.type + ' created !', "Success !", { duration: 1000, horizontalPosition: 'center',panelClass: 'snackbar'});
+                          //snackBarRef.afterDismissed().subscribe(() => {});
 
                           if (this.isAddingItem === true)
                           {
@@ -205,8 +205,8 @@ export class ItemsNewComponent implements OnInit {
                         {
                           // fin upload avec message d'erreur
                           this.uploadProgress = 100; 
-                          let snackBarRef = this._snackBar.open(event.body, "Error !", { duration: 1500, horizontalPosition:  'center', panelClass: 'snackbar'});  
-                          snackBarRef.afterDismissed().subscribe(null, null, () => this.isAddingItem = false); 
+                          let snackBarRef = this._snackBar.open(event.body, "Error !", { duration: 1000, horizontalPosition:  'center', panelClass: 'snackbar'});  
+                          snackBarRef.afterDismissed().subscribe(() => this.isAddingItem = false); 
                         }
                       }
                     });

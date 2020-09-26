@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DisplayService } from '../../display.service';
 import { ItemsStateService } from '../items-state.service';
 import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-items-list',
@@ -27,11 +28,16 @@ export class ItemsListComponent implements OnInit
     {'name' : 'Ultra dob','aperture' : 66, 'focal' : 450, 'fdratio' : 5.2, 'manufacturer' : 'Claudio', 'description' : 'Grossissement max : 120x. Poids : 3.2kg' },
     {'name' : 'Apo 66','aperture' : 66, 'focal' : 450, 'fdratio' : 5.2, 'manufacturer' : 'Claudio', 'description' : 'Grossissement max : 120x. Poids : 3.2kg' }
   ];
+
+  // valeur de retour de suppression
+  private deleteItemMessage : string = "";
+
   
 
   constructor(private displayService : DisplayService, 
               private itemsState : ItemsStateService,
-              private http : HttpClient) { }
+              private http : HttpClient,
+              private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void 
   {
@@ -68,6 +74,35 @@ export class ItemsListComponent implements OnInit
   {
     this.itemsState.setState('create');
     this.displayService.setDisplayStatus(this.type);
+  }
+
+  deleteItem(itemId : number)
+  {
+    // delete message
+    let snackBarRef = this._snackBar.open("Delete all images ?", "Yes !", { duration: 2000, horizontalPosition:  'center'});  
+    snackBarRef.onAction().subscribe(() => 
+    {
+      let url = `/DeleteItem?itemType=${this.type}&itemId=${itemId}`;
+      this.http.delete(url,{responseType: 'text'}).subscribe(deleteResult => 
+      {
+        this.deleteItemMessage = deleteResult;
+        this.fetchItems(this.type);
+      });
+    });
+
+    snackBarRef.afterDismissed().subscribe(() => 
+    {
+      if (this.deleteItemMessage.includes('SUCCESS'))
+      {
+        // message de succès
+        this._snackBar.open("Equipment deleted !", "Success !", { duration: 1000, horizontalPosition:  'center'});  
+      }
+      else
+      {
+        // message d'erreur
+        this._snackBar.open("An error occured", "Error", { duration: 1000, horizontalPosition:  'center'});  
+      }
+    }); 
   }
 
   onSelectedItem(index : number)

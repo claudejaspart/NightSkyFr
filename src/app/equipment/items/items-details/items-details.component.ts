@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { DisplayService } from '../../display.service';
 import { ItemsStateService } from '../items-state.service';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgImageSliderComponent } from 'ng-image-slider';
 
 @Component({
   selector: 'app-items-details',
@@ -22,6 +23,9 @@ export class ItemsDetailsComponent implements OnInit
   noImage : boolean = true;
   numberThumbs : number = 15;
   isAddingImage : boolean = false;
+
+  // slider control
+  @ViewChild('nav') slider: NgImageSliderComponent;
 
   // image variables
   selectedFile : File;
@@ -73,8 +77,8 @@ export class ItemsDetailsComponent implements OnInit
     let url = `/EquipmentImages?type=${this.type}&id=${this.selectedItem.id}`;
     this.http.get(url).subscribe(retrievedList => 
       {
-        this.itemImages = retrievedList;
-        this.createImageObject();
+         this.itemImages = retrievedList;
+         this.createImageObject();
       });
   }
 
@@ -124,6 +128,10 @@ export class ItemsDetailsComponent implements OnInit
       }
   }
 
+  // controls sliders
+  prevImageClick() { this.slider.prev(); }
+  nextImageClick() { this.slider.next(); }
+
   // *************************************
   // gestion de la suppression d'une image
   // *************************************
@@ -132,12 +140,12 @@ export class ItemsDetailsComponent implements OnInit
     if (this.deleteImageEnabled && !this.noImage && this.imageIndex < this.itemImages.length)
     {
       // delete message
-      let snackBarRef = this._snackBar.open("Delete image ?", "Yes !", { duration: 2000, horizontalPosition:  'center'});  
+      let snackBarRef = this._snackBar.open("Delete image ?", "Yes !", { duration: 1000, horizontalPosition:  'center'});  
       snackBarRef.onAction().subscribe(() => 
       {
         this.deleteItemSpecificImage(this.imageIndex);
       });
-      snackBarRef.afterDismissed().subscribe(null, null, () => {});
+      //snackBarRef.afterDismissed().subscribe(() => {});
     }
   }
 
@@ -164,7 +172,7 @@ export class ItemsDetailsComponent implements OnInit
         snackBarRef.onAction().subscribe(() => {
           this.deleteItemAllImages();        
         });
-        snackBarRef.afterDismissed().subscribe(null, null, () => {});
+        //snackBarRef.afterDismissed().subscribe(null, null, () => {});
   }
 
 

@@ -47,7 +47,7 @@
                         <div class="flex-1 text-white text-center" *ngIf="type==='binoculars'">{{item.afov}}</div>
 
                         <div class="flex-1 text-white text-center">                            
-                            <button class="text-white bg-red-500 border-0 py-1 px-1 focus:outline-none hover:bg-red-700 rounded text-sm" ><img src="../../../../assets/Icons/general-icons/stop_white.png"  class="w-3 h-3"></button>
+                            <button class="text-white bg-red-500 border-0 py-1 px-1 focus:outline-none hover:bg-red-700 rounded text-sm" (click)="deleteItem(item.id)"><img src="../../../../assets/Icons/general-icons/stop_white.png"  class="w-3 h-3"></button>
                         </div>                            
                     </div>
                 </div>
