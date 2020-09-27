@@ -24,10 +24,12 @@ export class ItemsListComponent implements OnInit
   col2 : string = "";
   col3 : string = "";
 
-  itemsData: any = [
+  itemsData: any = 
+  [
     {'name' : 'Ultra dob','aperture' : 66, 'focal' : 450, 'fdratio' : 5.2, 'manufacturer' : 'Claudio', 'description' : 'Grossissement max : 120x. Poids : 3.2kg' },
     {'name' : 'Apo 66','aperture' : 66, 'focal' : 450, 'fdratio' : 5.2, 'manufacturer' : 'Claudio', 'description' : 'Grossissement max : 120x. Poids : 3.2kg' }
   ];
+  
 
   // valeur de retour de suppression
   private deleteItemMessage : string = "";

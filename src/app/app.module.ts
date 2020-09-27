@@ -12,11 +12,8 @@ import { ObservingListComponent } from './observing-list/observing-list.componen
 import { EquipmentComponent } from './equipment/equipment.component';
 import { SitesComponent } from './sites/sites.component';
 import { FovIndicatorsComponent } from './fov-indicators/fov-indicators.component';
-import { TelescopesComponent } from './equipment/telescopes/telescopes.component';
-import { TelescopeDetailsComponent } from './equipment/telescopes/telescope-details/telescope-details.component';
-import { TelescopeNewComponent } from './equipment/telescopes/telescope-new/telescope-new.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {  MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -42,9 +39,6 @@ import { NgImageSliderModule } from 'ng-image-slider';
     EquipmentComponent,
     SitesComponent,
     FovIndicatorsComponent,
-    TelescopesComponent,
-    TelescopeDetailsComponent,
-    TelescopeNewComponent,
     ItemsComponent,
     ItemsListComponent,
     ItemsDetailsComponent,
