@@ -81,7 +81,7 @@ export class ItemsListComponent implements OnInit
   deleteItem(itemId : number)
   {
     // delete message
-    let snackBarRef = this._snackBar.open("Delete all images ?", "Yes !", { duration: 2000, horizontalPosition:  'center'});  
+    let snackBarRef = this._snackBar.open("Delete equipment ?", "Yes !", { duration: 2000, horizontalPosition:  'center'});  
     snackBarRef.onAction().subscribe(() => 
     {
       let url = `/DeleteItem?itemType=${this.type}&itemId=${itemId}`;

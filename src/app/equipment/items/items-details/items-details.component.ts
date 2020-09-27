@@ -151,6 +151,7 @@ export class ItemsDetailsComponent implements OnInit
       snackBarRef.onAction().subscribe(() => 
       {
         this.deleteItemSpecificImage(this.imageIndex);
+        
       });
       //snackBarRef.afterDismissed().subscribe(() => {});
     }
@@ -176,10 +177,12 @@ export class ItemsDetailsComponent implements OnInit
   {
         // delete message
         let snackBarRef = this._snackBar.open("Delete all images ?", "Yes !", { duration: 2000, horizontalPosition:  'center'});  
-        snackBarRef.onAction().subscribe(() => {
+        snackBarRef.onAction().subscribe(() => 
+        {
           this.deleteItemAllImages();        
         });
-        //snackBarRef.afterDismissed().subscribe(null, null, () => {});
+        
+        snackBarRef.afterDismissed().subscribe(() => {});
   }
 
 
@@ -187,12 +190,12 @@ export class ItemsDetailsComponent implements OnInit
   deleteItemAllImages()
   {
     let url = `/DeleteAllEquipmentImages?type=${this.type}&itemId=${this.selectedItem.id}`;
-    this.http.delete(url,{responseType: 'text'}).subscribe(event => 
+    this.http.delete(url,{responseType: 'text'}).subscribe(result => 
       {
-        if (event.includes('SUCCESS'))
-          this.displaySnackbarMessage("Images deleted !","Success !",2000);
+        if (result.includes('SUCCESS'))
+          this.displaySnackbarMessage("Images deleted !","Success !",1000);
         else
-          this.displaySnackbarMessage(event,"Error !",3000);
+          this.displaySnackbarMessage("Images not deleted !","Error !",1000);
 
         // rafraichissement des images
         this.fetchItemImages();
