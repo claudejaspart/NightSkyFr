@@ -5,6 +5,7 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgImageSliderComponent } from 'ng-image-slider';
 
+
 @Component({
   selector: 'app-items-details',
   templateUrl: './items-details.component.html',
@@ -23,6 +24,12 @@ export class ItemsDetailsComponent implements OnInit
   noImage : boolean = true;
   numberThumbs : number = 15;
   isAddingImage : boolean = false;
+ 
+
+  // mode edition
+  editingField : string = "";
+  oldValue = "";
+
 
   // slider control
   @ViewChild('nav') slider: NgImageSliderComponent;
@@ -34,7 +41,7 @@ export class ItemsDetailsComponent implements OnInit
   constructor(  private displayService : DisplayService, 
                 private itemsStateService : ItemsStateService, 
                 private http : HttpClient,
-                private _snackBar: MatSnackBar,) { }
+                private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void 
   {
@@ -203,9 +210,8 @@ export class ItemsDetailsComponent implements OnInit
 
   onImageUpload()
   {
-      
       // variable formData
-      const fd = new FormData();
+      let fd = new FormData();
       this.isAddingImage = true
 
       // ajout des images
@@ -251,8 +257,75 @@ export class ItemsDetailsComponent implements OnInit
   displaySnackbarMessage(message:string, actionMessage: string, msDuration: number)
   {
         // delete message
-        let snackBarRef = this._snackBar.open(message, actionMessage, { duration: msDuration, horizontalPosition:  'center'});  
+        this._snackBar.open(message, actionMessage, { duration: msDuration, horizontalPosition:  'center'});  
   }
 
+  /* ************************* */
+  /* Editing fields logic      */
+  /* ************************* */
+  editField(field)
+  {
+    if (this.editingField.length === 0)
+    {
+      this.editingField = field;
+      this.oldValue= this.selectedItem[this.editingField];
+    }
+    else
+      this.displaySnackbarMessage("Editing another field !","Ooops !", 1000);
+  }
+
+  saveField()
+  {
+    // calcul du rapport f/d
+    if (this.type==='telescope' && (this.editingField==='aperture' || this.editingField==='focal'))
+      this.calculateRatio();
+    
+    // sauvegarde des données
+    this.saveData();
+
+    // reset mode edition
+    this.editingField = "";
+  }
+
+  saveData()
+  {
+    const bodyContent = 
+    {
+      itemType :  this.type,
+      itemId : this.selectedItem.id,
+      fieldName : this.editingField,
+      fieldValue : this.selectedItem[this.editingField]
+    };
+
+    let url = `/SaveEquipmentDataField`;
+    this.http.post(url, bodyContent ,{responseType: 'text', observe: 'events'}).subscribe(event => 
+    {
+      if (event.type === HttpEventType.Response)
+      {
+        if (event.body.includes('SUCCESS'))
+          this.displaySnackbarMessage("Field updated !","Success !", 1000);
+        else
+        {
+          this.displaySnackbarMessage("Updating went wrong !","Error !", 1000);
+          this.selectedItem[this.editingField] = this.oldValue;
+        }
+      }
+    });
+  }
+
+  // calcul du rapport f/d
+  calculateRatio()
+  {
+    if (this.selectedItem.aperture > 0 && this.selectedItem.focal > 0)
+    {
+      this.selectedItem.fdratio = Math.round(10*this.selectedItem.focal/this.selectedItem.aperture) / 10;
+    }
+  }
+
+  cancelEditing()
+  {
+    this.selectedItem[this.editingField] = this.oldValue;
+    this.editingField = "";
+  }
 
 }

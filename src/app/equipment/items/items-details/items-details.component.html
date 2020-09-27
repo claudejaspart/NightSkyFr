@@ -18,48 +18,190 @@
         <div class="container pl-2 pr-6 py-12 mx-auto">
           <div class="flex flex-wrap -m-4">
 
+                <!-- ************************** -->
+                <!--          name              -->
+                <!-- ************************** -->
+                <div class="sm:w-1/3 w-1/2  sm:p-4 p-2">
+                    <div class="border border-gray-800 sm:p-6 p-2 rounded-lg">
+                        <div class="inline-block h-6 relative top-0 float-right">    
+
+                            <!-- button start editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="editField('name')" *ngIf="editingField !== 'name'">
+                                <img src="../../../../assets/Icons/general-icons/edit_green.png" class="w-3 h-3">
+                            </button>
+
+                            <!-- button cancel editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="cancelEditing()" *ngIf="editingField === 'name'">
+                                <img src="../../../../assets/Icons/general-icons/stop_salmon.png" class="w-3 h-3">
+                            </button>
+
+                        </div>
+                        <div class="sm:w-10 sm:h-10 w-5 h-5 sm:text-lg text-xs inline-flex items-center justify-center rounded-full bg-gray-800 text-teal-500 sm:mb-4 mb-2">N</div>
+                        <h2 class="inline-block sm:text-base text-xs text-teal-500 font-medium title-font sm:mb-2 sm:ml-5 mb-1 ml-2">Name</h2>
+                        <div class="border-t border-gray-800 w-full mb-3 h-1">&nbsp;</div>
+
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField !== 'name'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-full">
+                                <span class="h-8">{{ selectedItem.name }}</span>
+                            </span>
+                        </div>
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField === 'name'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-3/4">
+                                <input [(ngModel)]="selectedItem.name" value={{selectedItem.name}} type="text" class="w-full h-8 px-4 py-2 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 " autofocus>
+                            </span>
+                            <span class="inline-flex w-1/4  justify-center ">
+                                <button class="px-2 text-white border-0 focus:outline-none hover:bg-gray-800 rounded" (click)="saveField()">
+                                    <img src="../../../../assets/Icons/general-icons/check.png" class="w-3 h-3">
+                                </button>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+
                 <!-- ********************************************************************** -->
                 <!-- DETAILS TELESCOPE                                                      -->
                 <!-- ********************************************************************** -->
+
+                <!-- ************************** -->
+                <!--          APERTURE          -->
+                <!-- ************************** -->
                 <div class="sm:w-1/3 w-1/2  sm:p-4 p-2" *ngIf="type==='telescope'">
                     <div class="border border-gray-800 sm:p-6 p-2 rounded-lg">
-                        <div class="inline-block h-6 relative top-0 float-right">
-                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" >
-                                <img src="../../../../assets/Icons/general-icons/edit_green.png"  class="w-3">
+                        <div class="inline-block h-6 relative top-0 float-right">    
+
+                            <!-- button start editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="editField('aperture')" *ngIf="editingField !== 'aperture'">
+                                <img src="../../../../assets/Icons/general-icons/edit_green.png" class="w-3 h-3">
                             </button>
+
+                            <!-- button cancel editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="cancelEditing()" *ngIf="editingField === 'aperture'">
+                                <img src="../../../../assets/Icons/general-icons/stop_salmon.png" class="w-3 h-3">
+                            </button>
+
                         </div>
                         <div class="sm:w-10 sm:h-10 w-5 h-5 sm:text-lg text-xs inline-flex items-center justify-center rounded-full bg-gray-800 text-teal-500 sm:mb-4 mb-2">D</div>
                         <h2 class="inline-block sm:text-base text-xs text-teal-500 font-medium title-font sm:mb-2 sm:ml-5 mb-1 ml-2">Diameter</h2>
                         <div class="border-t border-gray-800 w-full mb-3 h-1">&nbsp;</div>
-                        <p class="sm:leading-regitlaxed leading-none sm:text-base text-xs">{{ selectedItem.aperture }} mm</p>
+
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField !== 'aperture'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-full">
+                                <span class="h-8">{{ selectedItem.aperture }} mm</span>
+                            </span>
+                        </div>
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField === 'aperture'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-3/4">
+                                <input [(ngModel)]="selectedItem.aperture" value={{selectedItem.aperture}} class="w-full h-8 px-4 py-2 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 " type="number" autofocus>
+                            </span>
+                            <span class="inline-flex w-1/4  justify-center ">
+                                <button class="px-2 text-white border-0 focus:outline-none hover:bg-gray-800 rounded" (click)="saveField()">
+                                    <img src="../../../../assets/Icons/general-icons/check.png" class="w-3 h-3">
+                                </button>
+                            </span>
+                        </div>
+
                     </div>
                 </div>
 
+
+                <!-- ************************** -->
+                <!--          FOCAL          -->
+                <!-- ************************** -->
                 <div class="sm:w-1/3 w-1/2  sm:p-4 p-2" *ngIf="type==='telescope'">
                     <div class="border border-gray-800 sm:p-6 p-2 rounded-lg">
-                        <div class="inline-block h-6 relative top-0 float-right">
-                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" >
-                                <img src="../../../../assets/Icons/general-icons/edit_green.png"  class="w-3">
+                        <div class="inline-block h-6 relative top-0 float-right">    
+
+                            <!-- button start editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="editField('focal')" *ngIf="editingField !== 'focal'">
+                                <img src="../../../../assets/Icons/general-icons/edit_green.png" class="w-3 h-3">
                             </button>
+
+                            <!-- button cancel editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="cancelEditing()" *ngIf="editingField === 'focal'">
+                                <img src="../../../../assets/Icons/general-icons/stop_salmon.png" class="w-3 h-3">
+                            </button>
+
                         </div>
                         <div class="sm:w-10 sm:h-10 w-5 h-5 sm:text-lg text-xs inline-flex items-center justify-center rounded-full bg-gray-800 text-teal-500 sm:mb-4 mb-2">F</div>
                         <h2 class="inline-block sm:text-base text-xs text-teal-500 font-medium title-font sm:mb-2 sm:ml-5 mb-1 ml-2">Focal</h2>
                         <div class="border-t border-gray-800 w-full mb-3 h-1">&nbsp;</div>
-                        <p class="sm:leading-regitlaxed leading-none sm:text-base text-xs">{{ selectedItem.aperture }} mm</p>
+
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField !== 'focal'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-full">
+                                <span class="h-8">{{ selectedItem.focal }} mm</span>
+                            </span>
+                        </div>
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField === 'focal'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-3/4">
+                                <input [(ngModel)]="selectedItem.focal" value={{selectedItem.focal}} class="w-full h-8 px-4 py-2 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 " type="number" autofocus>
+                            </span>
+                            <span class="inline-flex w-1/4  justify-center ">
+                                <button class="px-2 text-white border-0 focus:outline-none hover:bg-gray-800 rounded" (click)="saveField()">
+                                    <img src="../../../../assets/Icons/general-icons/check.png" class="w-3 h-3">
+                                </button>
+                            </span>
+                        </div>
+
                     </div>
                 </div>
 
+
+
+                <!-- ************************** -->
+                <!--          F/D RATIO         -->
+                <!-- ************************** -->
                 <div class="sm:w-1/3 w-1/2  sm:p-4 p-2" *ngIf="type==='telescope'">
                     <div class="border border-gray-800 sm:p-6 p-2 rounded-lg">
-                        <div class="inline-block h-6 relative top-0 float-right">
-                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" >
-                                <img src="../../../../assets/Icons/general-icons/edit_green.png"  class="w-3">
+                        <div class="inline-block h-6 relative top-0 float-right">    
+
+                            <!-- button start editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="editField('fdratio')" *ngIf="editingField !== 'fdratio'">
+                                <img src="../../../../assets/Icons/general-icons/edit_green.png" class="w-3 h-3">
                             </button>
+
+                            <!-- button cancel editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="cancelEditing()" *ngIf="editingField === 'fdratio'">
+                                <img src="../../../../assets/Icons/general-icons/stop_salmon.png" class="w-3 h-3">
+                            </button>
+
                         </div>
                         <div class="sm:w-10 sm:h-10 w-5 h-5 sm:text-lg text-xs inline-flex items-center justify-center rounded-full bg-gray-800 text-teal-500 sm:mb-4 mb-2">R</div>
-                        <h2 class="inline-block sm:text-base text-xs text-teal-500 font-medium title-font sm:mb-2 sm:ml-5 mb-1 ml-2">F/D ratio</h2>
+                        <h2 class="inline-block sm:text-base text-xs text-teal-500 font-medium title-font sm:mb-2 sm:ml-5 mb-1 ml-2">F/D Ratio</h2>
                         <div class="border-t border-gray-800 w-full mb-3 h-1">&nbsp;</div>
-                        <p class="sm:leading-regitlaxed leading-none sm:text-base text-xs">{{ selectedItem.fdratio }}</p>
+
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField !== 'fdratio'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-full">
+                                <span class="h-8">{{ selectedItem.fdratio }}</span>
+                            </span>
+                        </div>
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField === 'fdratio'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-3/4">
+                                <input [(ngModel)]="selectedItem.fdratio" value={{selectedItem.fdratio}} class="w-full h-8 px-4 py-2 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 " type="number" step="0.1" autofocus>
+                            </span>
+                            <span class="inline-flex w-1/4  justify-center ">
+                                <button class="px-2 text-white border-0 focus:outline-none hover:bg-gray-800 rounded" (click)="saveField()">
+                                    <img src="../../../../assets/Icons/general-icons/check.png" class="w-3 h-3">
+                                </button>
+                            </span>
+                        </div>
+
                     </div>
                 </div>
 
@@ -67,76 +209,231 @@
                 <!-- ********************************************************************** -->
                 <!-- EYEPIECE DETAILS                                                       -->
                 <!-- ********************************************************************** -->
+                <!-- ************************** -->
+                <!--          FOCAL             -->
+                <!-- ************************** -->
                 <div class="sm:w-1/3 w-1/2  sm:p-4 p-2" *ngIf="type==='eyepiece'">
                     <div class="border border-gray-800 sm:p-6 p-2 rounded-lg">
-                        <div class="inline-block h-6 relative top-0 float-right">
-                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" >
-                                <img src="../../../../assets/Icons/general-icons/edit_green.png"  class="w-3">
+                        <div class="inline-block h-6 relative top-0 float-right">    
+
+                            <!-- button start editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="editField('focal')" *ngIf="editingField !== 'focal'">
+                                <img src="../../../../assets/Icons/general-icons/edit_green.png" class="w-3 h-3">
                             </button>
+
+                            <!-- button cancel editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="cancelEditing()" *ngIf="editingField === 'focal'">
+                                <img src="../../../../assets/Icons/general-icons/stop_salmon.png" class="w-3 h-3">
+                            </button>
+
                         </div>
-                        <div class="sm:w-10 sm:h-10 w-5 h-5 sm:text-lg text-xs inline-flex items-center justify-center rounded-full bg-gray-800 text-teal-500 sm:mb-4 mb-2">A</div>
+                        <div class="sm:w-10 sm:h-10 w-5 h-5 sm:text-lg text-xs inline-flex items-center justify-center rounded-full bg-gray-800 text-teal-500 sm:mb-4 mb-2">F</div>
                         <h2 class="inline-block sm:text-base text-xs text-teal-500 font-medium title-font sm:mb-2 sm:ml-5 mb-1 ml-2">Focal</h2>
                         <div class="border-t border-gray-800 w-full mb-3 h-1">&nbsp;</div>
-                        <p class="sm:leading-regitlaxed leading-none sm:text-base text-xs">{{ selectedItem.focal }} mm</p>
+
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField !== 'focal'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-full">
+                                <span class="h-8">{{ selectedItem.focal }} mm</span>
+                            </span>
+                        </div>
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField === 'focal'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-3/4">
+                                <input [(ngModel)]="selectedItem.focal" value={{selectedItem.focal}} class="w-full h-8 px-4 py-2 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 " type="number" autofocus>
+                            </span>
+                            <span class="inline-flex w-1/4  justify-center ">
+                                <button class="px-2 text-white border-0 focus:outline-none hover:bg-gray-800 rounded" (click)="saveField()">
+                                    <img src="../../../../assets/Icons/general-icons/check.png" class="w-3 h-3">
+                                </button>
+                            </span>
+                        </div>
+
                     </div>
                 </div>
 
+                <!-- ************************** -->
+                <!--          afov               -->
+                <!-- ************************** -->
                 <div class="sm:w-1/3 w-1/2  sm:p-4 p-2" *ngIf="type==='eyepiece'">
                     <div class="border border-gray-800 sm:p-6 p-2 rounded-lg">
-                        <div class="inline-block h-6 relative top-0 float-right">
-                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" >
-                                <img src="../../../../assets/Icons/general-icons/edit_green.png"  class="w-3">
+                        <div class="inline-block h-6 relative top-0 float-right">    
+
+                            <!-- button start editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="editField('afov')" *ngIf="editingField !== 'afov'">
+                                <img src="../../../../assets/Icons/general-icons/edit_green.png" class="w-3 h-3">
                             </button>
+
+                            <!-- button cancel editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="cancelEditing()" *ngIf="editingField === 'afov'">
+                                <img src="../../../../assets/Icons/general-icons/stop_salmon.png" class="w-3 h-3">
+                            </button>
+
                         </div>
                         <div class="sm:w-10 sm:h-10 w-5 h-5 sm:text-lg text-xs inline-flex items-center justify-center rounded-full bg-gray-800 text-teal-500 sm:mb-4 mb-2">A</div>
                         <h2 class="inline-block sm:text-base text-xs text-teal-500 font-medium title-font sm:mb-2 sm:ml-5 mb-1 ml-2">AFOV</h2>
                         <div class="border-t border-gray-800 w-full mb-3 h-1">&nbsp;</div>
-                        <p class="sm:leading-regitlaxed leading-none sm:text-base text-xs">{{ selectedItem.afov }} °</p>
+
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField !== 'afov'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-full">
+                                <span class="h-8">{{ selectedItem.afov }} °</span>
+                            </span>
+                        </div>
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField === 'afov'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-3/4">
+                                <input [(ngModel)]="selectedItem.afov" value={{selectedItem.afov}} class="w-full h-8 px-4 py-2 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 " type="number" autofocus>
+                            </span>
+                            <span class="inline-flex w-1/4  justify-center ">
+                                <button class="px-2 text-white border-0 focus:outline-none hover:bg-gray-800 rounded" (click)="saveField()">
+                                    <img src="../../../../assets/Icons/general-icons/check.png" class="w-3 h-3">
+                                </button>
+                            </span>
+                        </div>
+
                     </div>
                 </div>
 
                 <!-- ********************************************************************** -->
                 <!-- BINOCULARS DETAILS                                                     -->
                 <!-- ********************************************************************** -->
+                <!-- ************************** -->
+                <!--          aperture        -->
+                <!-- ************************** -->
                 <div class="sm:w-1/3 w-1/2  sm:p-4 p-2" *ngIf="type==='binoculars'">
                     <div class="border border-gray-800 sm:p-6 p-2 rounded-lg">
-                        <div class="inline-block h-6 relative top-0 float-right">
-                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" >
-                                <img src="../../../../assets/Icons/general-icons/edit_green.png"  class="w-3">
+                        <div class="inline-block h-6 relative top-0 float-right">    
+
+                            <!-- button start editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="editField('aperture')" *ngIf="editingField !== 'aperture'">
+                                <img src="../../../../assets/Icons/general-icons/edit_green.png" class="w-3 h-3">
                             </button>
+
+                            <!-- button cancel editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="cancelEditing()" *ngIf="editingField === 'aperture'">
+                                <img src="../../../../assets/Icons/general-icons/stop_salmon.png" class="w-3 h-3">
+                            </button>
+
                         </div>
-                        <div class="sm:w-10 sm:h-10 w-5 h-5 sm:text-lg text-xs inline-flex items-center justify-center rounded-full bg-gray-800 text-teal-500 sm:mb-4 mb-2">D</div>
-                        <h2 class="inline-block sm:text-base text-xs text-teal-500 font-medium title-font sm:mb-2 sm:ml-5 mb-1 ml-2">Diameter</h2>
+                        <div class="sm:w-10 sm:h-10 w-5 h-5 sm:text-lg text-xs inline-flex items-center justify-center rounded-full bg-gray-800 text-teal-500 sm:mb-4 mb-2">A</div>
+                        <h2 class="inline-block sm:text-base text-xs text-teal-500 font-medium title-font sm:mb-2 sm:ml-5 mb-1 ml-2">Aperture</h2>
                         <div class="border-t border-gray-800 w-full mb-3 h-1">&nbsp;</div>
-                        <p class="sm:leading-regitlaxed leading-none sm:text-base text-xs">{{ selectedItem.aperture }} mm</p>
+
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField !== 'aperture'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-full">
+                                <span class="h-8">{{ selectedItem.aperture }} mm</span>
+                            </span>
+                        </div>
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField === 'aperture'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-3/4">
+                                <input [(ngModel)]="selectedItem.aperture" value={{selectedItem.aperture}} class="w-full h-8 px-4 py-2 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 " type="number" autofocus>
+                            </span>
+                            <span class="inline-flex w-1/4  justify-center ">
+                                <button class="px-2 text-white border-0 focus:outline-none hover:bg-gray-800 rounded" (click)="saveField()">
+                                    <img src="../../../../assets/Icons/general-icons/check.png" class="w-3 h-3">
+                                </button>
+                            </span>
+                        </div>
+
                     </div>
                 </div>
 
+                <!-- ************************** -->
+                <!--          magnification        -->
+                <!-- ************************** -->
                 <div class="sm:w-1/3 w-1/2  sm:p-4 p-2" *ngIf="type==='binoculars'">
                     <div class="border border-gray-800 sm:p-6 p-2 rounded-lg">
-                        <div class="inline-block h-6 relative top-0 float-right">
-                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" >
-                                <img src="../../../../assets/Icons/general-icons/edit_green.png"  class="w-3">
+                        <div class="inline-block h-6 relative top-0 float-right">    
+
+                            <!-- button start editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="editField('magnification')" *ngIf="editingField !== 'magnification'">
+                                <img src="../../../../assets/Icons/general-icons/edit_green.png" class="w-3 h-3">
                             </button>
+
+                            <!-- button cancel editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="cancelEditing()" *ngIf="editingField === 'magnification'">
+                                <img src="../../../../assets/Icons/general-icons/stop_salmon.png" class="w-3 h-3">
+                            </button>
+
                         </div>
                         <div class="sm:w-10 sm:h-10 w-5 h-5 sm:text-lg text-xs inline-flex items-center justify-center rounded-full bg-gray-800 text-teal-500 sm:mb-4 mb-2">M</div>
-                        <h2 class="inline-block sm:text-base text-xs text-teal-500 font-medium title-font sm:mb-2 sm:ml-5 mb-1 ml-2">Power</h2>
+                        <h2 class="inline-block sm:text-base text-xs text-teal-500 font-medium title-font sm:mb-2 sm:ml-5 mb-1 ml-2">Magnification</h2>
                         <div class="border-t border-gray-800 w-full mb-3 h-1">&nbsp;</div>
-                        <p class="sm:leading-regitlaxed leading-none sm:text-base text-xs">{{ selectedItem.magnification }} x</p>
+
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField !== 'magnification'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-full">
+                                <span class="h-8">{{ selectedItem.magnification }} x</span>
+                            </span>
+                        </div>
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField === 'magnification'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-3/4">
+                                <input [(ngModel)]="selectedItem.magnification" value={{selectedItem.magnification}} class="w-full h-8 px-4 py-2 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 " type="number" autofocus>
+                            </span>
+                            <span class="inline-flex w-1/4  justify-center ">
+                                <button class="px-2 text-white border-0 focus:outline-none hover:bg-gray-800 rounded" (click)="saveField()">
+                                    <img src="../../../../assets/Icons/general-icons/check.png" class="w-3 h-3">
+                                </button>
+                            </span>
+                        </div>
+
                     </div>
                 </div>
 
+               <!-- ************************** -->
+                <!--          afov               -->
+                <!-- ************************** -->
                 <div class="sm:w-1/3 w-1/2  sm:p-4 p-2" *ngIf="type==='binoculars'">
                     <div class="border border-gray-800 sm:p-6 p-2 rounded-lg">
-                        <div class="inline-block h-6 relative top-0 float-right">
-                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" >
-                                <img src="../../../../assets/Icons/general-icons/edit_green.png"  class="w-3">
+                        <div class="inline-block h-6 relative top-0 float-right">    
+
+                            <!-- button start editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="editField('afov')" *ngIf="editingField !== 'afov'">
+                                <img src="../../../../assets/Icons/general-icons/edit_green.png" class="w-3 h-3">
                             </button>
+
+                            <!-- button cancel editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="cancelEditing()" *ngIf="editingField === 'afov'">
+                                <img src="../../../../assets/Icons/general-icons/stop_salmon.png" class="w-3 h-3">
+                            </button>
+
                         </div>
                         <div class="sm:w-10 sm:h-10 w-5 h-5 sm:text-lg text-xs inline-flex items-center justify-center rounded-full bg-gray-800 text-teal-500 sm:mb-4 mb-2">A</div>
                         <h2 class="inline-block sm:text-base text-xs text-teal-500 font-medium title-font sm:mb-2 sm:ml-5 mb-1 ml-2">AFOV</h2>
                         <div class="border-t border-gray-800 w-full mb-3 h-1">&nbsp;</div>
-                        <p class="sm:leading-regitlaxed leading-none sm:text-base text-xs">{{ selectedItem.afov }} °</p>
+
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField !== 'afov'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-full">
+                                <span class="h-8">{{ selectedItem.afov }} °</span>
+                            </span>
+                        </div>
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField === 'afov'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-3/4">
+                                <input [(ngModel)]="selectedItem.afov" value={{selectedItem.afov}} class="w-full h-8 px-4 py-2 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 " type="number" autofocus>
+                            </span>
+                            <span class="inline-flex w-1/4  justify-center ">
+                                <button class="px-2 text-white border-0 focus:outline-none hover:bg-gray-800 rounded" (click)="saveField()">
+                                    <img src="../../../../assets/Icons/general-icons/check.png" class="w-3 h-3">
+                                </button>
+                            </span>
+                        </div>
+
                     </div>
                 </div>
 
@@ -144,31 +441,101 @@
                 <!-- COMMON DETAILS                                                         -->
                 <!-- ********************************************************************** -->
 
+                <!-- ************************** -->
+                <!--          manufacturer        -->
+                <!-- ************************** -->
                 <div class="sm:w-1/3 w-1/2  sm:p-4 p-2">
                     <div class="border border-gray-800 sm:p-6 p-2 rounded-lg">
-                        <div class="inline-block h-6 relative top-0 float-right">
-                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" >
-                                <img src="../../../../assets/Icons/general-icons/edit_green.png"  class="w-3">
+                        <div class="inline-block h-6 relative top-0 float-right">    
+
+                            <!-- button start editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="editField('manufacturer')" *ngIf="editingField !== 'manufacturer'">
+                                <img src="../../../../assets/Icons/general-icons/edit_green.png" class="w-3 h-3">
                             </button>
+
+                            <!-- button cancel editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="cancelEditing()" *ngIf="editingField === 'manufacturer'">
+                                <img src="../../../../assets/Icons/general-icons/stop_salmon.png" class="w-3 h-3">
+                            </button>
+
                         </div>
                         <div class="sm:w-10 sm:h-10 w-5 h-5 sm:text-lg text-xs inline-flex items-center justify-center rounded-full bg-gray-800 text-teal-500 sm:mb-4 mb-2">M</div>
                         <h2 class="inline-block sm:text-base text-xs text-teal-500 font-medium title-font sm:mb-2 sm:ml-5 mb-1 ml-2">Maker</h2>
                         <div class="border-t border-gray-800 w-full mb-3 h-1">&nbsp;</div>
-                        <p class="sm:leading-regitlaxed leading-none sm:text-base text-xs">{{ selectedItem.manufacturer }}</p>
+
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField !== 'manufacturer'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-full">
+                                <span class="h-8">{{ selectedItem.manufacturer }}</span>
+                            </span>
+                        </div>
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField === 'manufacturer'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-3/4">
+                                <input [(ngModel)]="selectedItem.manufacturer" value={{selectedItem.manufacturer}} class="w-full h-8 px-4 py-2 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 " type="text" autofocus>
+                            </span>
+                            <span class="inline-flex w-1/4  justify-center ">
+                                <button class="px-2 text-white border-0 focus:outline-none hover:bg-gray-800 rounded" (click)="saveField()">
+                                    <img src="../../../../assets/Icons/general-icons/check.png" class="w-3 h-3">
+                                </button>
+                            </span>
+                        </div>
+
                     </div>
                 </div>
 
+
+
+                <!-- ************************** -->
+                <!--          description        -->
+                <!-- ************************** -->
                 <div class="w-full  sm:p-4 p-2">
                     <div class="border border-gray-800 sm:p-6 p-2 rounded-lg">
-                        <div class="inline-block h-6 relative top-0 float-right">
-                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" >
-                                <img src="../../../../assets/Icons/general-icons/edit_green.png"  class="w-3">
+                        <div class="inline-block h-6 relative top-0 float-right">    
+
+                            <!-- button start editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="editField('description')" *ngIf="editingField !== 'description'">
+                                <img src="../../../../assets/Icons/general-icons/edit_green.png" class="w-3 h-3">
                             </button>
+
+                            <!-- button cancel editing-->
+                            <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm" (click)="cancelEditing()" *ngIf="editingField === 'description'">
+                                <img src="../../../../assets/Icons/general-icons/stop_salmon.png" class="w-3 h-3">
+                            </button>
+
                         </div>
                         <div class="sm:w-10 sm:h-10 w-5 h-5 sm:text-lg text-xs inline-flex items-center justify-center rounded-full bg-gray-800 text-teal-500 sm:mb-4 mb-2">D</div>
                         <h2 class="inline-block sm:text-base text-xs text-teal-500 font-medium title-font sm:mb-2 sm:ml-5 mb-1 ml-2">Description</h2>
                         <div class="border-t border-gray-800 w-full mb-3 h-1">&nbsp;</div>
-                        <p class="sm:leading-relaxed leading-none sm:text-base text-xs">{{ selectedItem.description }}</p>
+
+
+                        <!-- affichage description -->
+                        <div  *ngIf="editingField !== 'description'" class="flex sm:text-base text-xs">
+                            <span class="inline-flex w-full">
+                                <span class="h-8">{{ selectedItem.description }}</span>
+                            </span>
+                        </div>
+
+                        <!-- edition -->
+                        <div  *ngIf="editingField === 'description'" class=" sm:text-base text-xs">
+
+                            <!-- bouton validation -->
+                            <div class="inline-block w-full ">
+                                <!-- button cancel editing-->
+                                <button class="ml-4 text-white  border-0 py-1 px-2 focus:outline-none hover:bg-gray-800 rounded text-sm float-right" (click)="saveField()" *ngIf="editingField === 'description'">
+                                    <img src="../../../../assets/Icons/general-icons/check.png" class="w-3 h-3">
+                                </button>
+                            </div>
+
+                            <!-- textarea edit-->
+                            <div class=" w-full">
+                                <textarea name="description" [(ngModel)]="selectedItem.description" class="w-full bg-gray-800 rounded border border-gray-700 text-white focus:outline-none h-24 focus:border-indigo-500 text-xs px-4 py-2 resize-none block" autofocus></textarea>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
 
