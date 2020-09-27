@@ -72,7 +72,6 @@ export class ItemsNewComponent implements OnInit {
 
   chooseFile(file)
   {
-    console.log(file);
     this.numberSelectedImages = file.length;
     this.totalSelectedFileSize = 0.0;
 
@@ -139,6 +138,9 @@ export class ItemsNewComponent implements OnInit {
       // variable de traitement
       this.isAddingItem = true;
 
+      // variables diverses
+      
+
       // variable formData
       const fd = new FormData();
 
@@ -157,12 +159,12 @@ export class ItemsNewComponent implements OnInit {
           break;
         case 'eyepiece':
           fd.append('focal', form.value.eyepieceFocal);
-          fd.append('afov', form.value.eyepieceAFOV !== undefined ? form.value.eyepieceAFOV : 0);
+          fd.append('afov', this.eyepieceAFOV >= 0 ? this.eyepieceAFOV.toString() : '0');
           break;
         case 'binoculars':
           fd.append('diameter', form.value.binocularsDiameter);
           fd.append('magnification', form.value.binocularsMagnification);
-          fd.append('afov', form.value.binocularsAFOV !== undefined ? form.value.binocularsAFOV : 0);
+          fd.append('afov', this.binocularsAFOV >= 0 ? this.binocularsAFOV.toString() : '0');
           break;
       }
 

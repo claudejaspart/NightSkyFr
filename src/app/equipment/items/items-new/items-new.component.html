@@ -68,8 +68,8 @@
 
         <!-- AFOV -->
         <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2" *ngIf="type==='eyepiece'">
-            <div class="sm:text-sm text-xs mb-2">AFOV</div>
-            <input  name="eyepieceAFOV" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
+            <div class="sm:text-sm text-xs mb-2">AFOV (°)</div>
+            <input [(ngModel)]="eyepieceAFOV" name="eyepieceAFOV" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
         </div>
 
 
@@ -95,8 +95,8 @@
 
         <!-- AFOV -->
         <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2" *ngIf="type==='binoculars'">
-            <div class="sm:text-sm text-xs mb-2">AFOV</div>
-            <input name="binocularsAFOV" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
+            <div class="sm:text-sm text-xs mb-2">AFOV (°)</div>
+            <input [(ngModel)]="binocularsAFOV" name="binocularsAFOV" class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="number">
         </div>
 
 
