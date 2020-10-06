@@ -23,6 +23,9 @@ import { ItemsListComponent } from './equipment/items/items-list/items-list.comp
 import { ItemsDetailsComponent } from './equipment/items/items-details/items-details.component';
 import { ItemsNewComponent } from './equipment/items/items-new/items-new.component';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { SitesListComponent } from './sites/sites-list/sites-list.component';
+import { SitesNewComponent } from './sites/sites-new/sites-new.component';
+import { SitesDetailsComponent } from './sites/sites-details/sites-details.component';
 
 
 
@@ -42,7 +45,10 @@ import { NgImageSliderModule } from 'ng-image-slider';
     ItemsComponent,
     ItemsListComponent,
     ItemsDetailsComponent,
-    ItemsNewComponent
+    ItemsNewComponent,
+    SitesListComponent,
+    SitesNewComponent,
+    SitesDetailsComponent
   ],
   imports: [
     BrowserModule,

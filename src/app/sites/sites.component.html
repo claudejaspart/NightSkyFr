@@ -1,1 +1,22 @@
-<p>sites works!</p>
+<div class="">
+
+    <!-- titre -->
+    <img src="../../assets/Icons/sites/sites.png"  class="ml-5 w-8 h-8 mr-2 float-left ">
+    <div class="text-2xl text-white h-8 pt-1 font-medium title-font">SITES
+        <!-- bouton ajout-->
+        <div class="ml-2 inline-block" *ngIf="currentSiteState === 'list'">
+            <button class="text-white bg-blue-600 border-0 py-1 px-1 focus:outline-none hover:bg-blue-900 rounded text-sm" (click)="createItem(type)"><img src="../../../../assets/Icons/general-icons/plus.png"  class="w-4 h-4"></button>
+        </div>
+    </div>
+
+    <!-- contenu -->
+    <div class="inline-block w-screen text-sm text-white pl-2 p-8">
+
+        <app-sites-list     *ngIf="currentSiteState==='list'"></app-sites-list>
+        <app-sites-details  *ngIf="currentSiteState==='details'"></app-sites-details>
+        <app-sites-new      *ngIf="currentSiteState==='create'"></app-sites-new> 
+        <br><br><br>
+       
+    </div>
+
+</div>

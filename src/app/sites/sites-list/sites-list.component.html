@@ -1,0 +1,36 @@
+<div class="p-2">
+
+    <!-- tableau-->
+    <section class="text-gray-500 body-font text-xs mr-5">
+        
+            <div class="table-border p-2 rounded-lg ">
+    
+                <!-- header -->
+                <div class="header flex pl-2 mb-1 mt-2 text-white ">
+                    <div class="header-element flex-1">{{col0}}</div>
+                    <div class="header-element flex-1 text-center">{{col1}}</div>
+                    <div class="header-element flex-1 text-center">{{col2}}</div>
+                    <div class="header-element flex-1 text-center">{{col3}}</div>
+                    <div class="header-element flex-1 text-center">Delete</div>
+                </div>
+            
+                <!-- data rows -->
+                <div  *ngFor="let site of sitesData; let i = index" class="pl-2 pt-2 pb-2" [ngClass]="{'row-dark':i%2==0,'row-light':i%2>0}">
+                    <div class="element flex">
+                        <!-- data -->
+                        <div class="flex-1 text-blue-500" (click)="onSelectedItem(i)"><a href="#">{{site.name}}</a></div>
+                        <div class="flex-1 text-white text-center">{{site.city}}</div>
+                        <div class="flex-1 text-white text-center">{{site.latitude}}</div>
+                        <div class="flex-1 text-white text-center">{{site.longitude}}</div>
+
+                        <!-- bouton delete -->
+                        <div class="flex-1 text-white text-center">                            
+                            <button class="text-white bg-red-500 border-0 py-1 px-1 focus:outline-none hover:bg-red-700 rounded text-sm" (click)="deleteItem(item.id)"><img src="../../../../assets/Icons/general-icons/stop_white.png"  class="w-3 h-3"></button>
+                        </div>                            
+                    </div>
+                </div>
+
+            </div>
+                
+        </section>
+</div>

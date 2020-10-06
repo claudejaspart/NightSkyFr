@@ -1,0 +1,84 @@
+<!-- formulaire de création de site -->
+<form (ngSubmit)="onSubmit(f)" #f="ngForm"> 
+    <div class="mr-5 sm:w-1/2">
+
+        <!-- TITRE -->
+        <!-- icone -->
+        <img src="../../../assets/Icons/sites/worldwide2.png"  class="ml-5 w-8 h-8 float-left mr-2">
+        
+        <div class="text-2xl h-8 pt-1 text-white mb-5">Add a site
+            <!-- bouton retour-->
+            <div class="inline-block">
+                <button class="text-white bg-blue-600 border-0 py-1 px-1 ml-2 focus:outline-none hover:bg-blue-900 rounded text-sm" (click)="onReturn()"><img src="../../../../assets/Icons/general-icons/back.png"  class="w-4 h-4"></button>
+            </div>
+        </div>
+
+        <!-- Name -->
+        <div class="inline-block px-3 py-4  sm:w-1/3 w-1/2">
+            <div class="sm:text-sm text-xs mb-2">Name *</div>
+            <input   name="name" ngModel class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="text">
+        </div>
+
+        <!-- City -->
+        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2">
+            <div class="sm:text-sm text-xs mb-2">City</div>
+            <input name="city" ngModel class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="text">
+        </div>
+
+
+        <!-- Country -->
+        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2">
+            <div class="sm:text-sm text-xs mb-2">Country</div>
+            <input name="country" ngModel class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="text">
+        </div>
+
+        
+        <!-- Latitude -->
+        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2">
+            <div class="sm:text-sm text-xs mb-2">Latitude</div>
+            <input name="latitude" ngModel class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="text">
+        </div>
+
+        <!-- Longitude -->
+        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2">
+            <div class="sm:text-sm text-xs mb-2">Longitude</div>
+            <input name="longitude" ngModel class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="text">
+        </div>
+
+        <!-- Elevation -->
+        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2">
+            <div class="sm:text-sm text-xs mb-2">Elevation (m)</div>
+            <input name="elevation" ngModel class="w-full h-8 bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-xs px-4 py-2" type="text">
+        </div>
+
+
+        <!-- Ajout d'images -->
+        <div class="inline-block px-3 py-4 sm:w-1/3 w-1/2">
+            <div class="sm:text-sm text-xs mb-2 italic">{{ getNumberSelectedImages() }}</div>
+            <input ngModel #hiddenfileinput name="image" style="display: none;" type="file" multiple (change)="chooseFile($event.target.files)" accept="image/x-png,image/gif,image/jpeg,image/ico">
+            <button type="button" name="selectfile" class="w-full h-8 bg-teal-500 rounded border-0 hover:bg-teal-600 sm:text-sm text-xs text-black px-4 py-1" (click)="hiddenfileinput.click()" >Select images ...</button>  
+        </div>
+
+    
+        <!-- Common description -->
+        <div class="px-3 py-4 w-full">
+            <div class="sm:text-sm text-xs mb-2">Description</div>
+            <textarea name="description" ngModel class="w-full bg-gray-800 rounded border border-gray-700 text-white focus:outline-none h-24 focus:border-indigo-500 text-xs px-4 py-2 resize-none block"></textarea>
+        </div>
+
+        <br>
+
+        <!-- Common button -->
+        <div class="px-3 py-4 w-full flex flex-wrap">
+            <div class="flex-1"><mat-spinner diameter="15" class="mt-2 flex mx-auto"  [ngStyle]="{'visibility':false ? 'visible' : 'hidden'}"></mat-spinner></div>
+            <button type="submit" class="flex-2 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-base" [ngClass]="{'opacity-50 cursor-not-allowed': !checkValidForm() || isAddingItem}" [disabled]="!f.valid">
+                    Add it ! 
+            </button>
+            <div class="flex-1">
+                <mat-spinner diameter="15" class="ml-3 mt-1" mode="determinate" [value]="uploadProgress" color="accent" [ngStyle]="{'visibility':isAddingItem ? 'visible' : 'hidden'}"></mat-spinner>
+                <div class="flex mx-auto ml-3 text-xs" [ngStyle]="{'visibility':isAddingItem ? 'visible' : 'hidden'}">{{ uploadProgress }} %</div>
+            </div>
+        </div>
+        
+    </div>
+</form>
