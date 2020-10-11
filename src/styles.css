@@ -10019,6 +10019,74 @@ video {
   flex-wrap: nowrap !important;
 }
 
+.place-items-auto {
+  place-items: auto !important;
+}
+
+.place-items-start {
+  place-items: start !important;
+}
+
+.place-items-end {
+  place-items: end !important;
+}
+
+.place-items-center {
+  place-items: center !important;
+}
+
+.place-items-stretch {
+  place-items: stretch !important;
+}
+
+.place-content-center {
+  place-content: center !important;
+}
+
+.place-content-start {
+  place-content: start !important;
+}
+
+.place-content-end {
+  place-content: end !important;
+}
+
+.place-content-between {
+  place-content: space-between !important;
+}
+
+.place-content-around {
+  place-content: space-around !important;
+}
+
+.place-content-evenly {
+  place-content: space-evenly !important;
+}
+
+.place-content-stretch {
+  place-content: stretch !important;
+}
+
+.place-self-auto {
+  place-self: auto !important;
+}
+
+.place-self-start {
+  place-self: start !important;
+}
+
+.place-self-end {
+  place-self: end !important;
+}
+
+.place-self-center {
+  place-self: center !important;
+}
+
+.place-self-stretch {
+  place-self: stretch !important;
+}
+
 .items-start {
   align-items: flex-start !important;
 }
@@ -10039,6 +10107,30 @@ video {
   align-items: stretch !important;
 }
 
+.content-center {
+  align-content: center !important;
+}
+
+.content-start {
+  align-content: flex-start !important;
+}
+
+.content-end {
+  align-content: flex-end !important;
+}
+
+.content-between {
+  align-content: space-between !important;
+}
+
+.content-around {
+  align-content: space-around !important;
+}
+
+.content-evenly {
+  align-content: space-evenly !important;
+}
+
 .self-auto {
   align-self: auto !important;
 }
@@ -10057,6 +10149,26 @@ video {
 
 .self-stretch {
   align-self: stretch !important;
+}
+
+.justify-items-auto {
+  justify-items: auto !important;
+}
+
+.justify-items-start {
+  justify-items: start !important;
+}
+
+.justify-items-end {
+  justify-items: end !important;
+}
+
+.justify-items-center {
+  justify-items: center !important;
+}
+
+.justify-items-stretch {
+  justify-items: stretch !important;
 }
 
 .justify-start {
@@ -10083,24 +10195,24 @@ video {
   justify-content: space-evenly !important;
 }
 
-.content-center {
-  align-content: center !important;
+.justify-self-auto {
+  justify-self: auto !important;
 }
 
-.content-start {
-  align-content: flex-start !important;
+.justify-self-start {
+  justify-self: start !important;
 }
 
-.content-end {
-  align-content: flex-end !important;
+.justify-self-end {
+  justify-self: end !important;
 }
 
-.content-between {
-  align-content: space-between !important;
+.justify-self-center {
+  justify-self: center !important;
 }
 
-.content-around {
-  align-content: space-around !important;
+.justify-self-stretch {
+  justify-self: stretch !important;
 }
 
 .flex-1 {
@@ -13824,7 +13936,6 @@ video {
 }
 
 .sticky {
-  position: -webkit-sticky !important;
   position: sticky !important;
 }
 
@@ -15920,6 +16031,51 @@ video {
   -moz-osx-font-smoothing: auto !important;
 }
 
+.ordinal, .slashed-zero, .lining-nums, .oldstyle-nums, .proportional-nums, .tabular-nums, .diagonal-fractions, .stacked-fractions {
+  --font-variant-numeric-ordinal: var(--tailwind-empty,/*!*/ /*!*/) !important;
+  --font-variant-numeric-slashed-zero: var(--tailwind-empty,/*!*/ /*!*/) !important;
+  --font-variant-numeric-figure: var(--tailwind-empty,/*!*/ /*!*/) !important;
+  --font-variant-numeric-spacing: var(--tailwind-empty,/*!*/ /*!*/) !important;
+  --font-variant-numeric-fraction: var(--tailwind-empty,/*!*/ /*!*/) !important;
+  font-variant-numeric: var(--font-variant-numeric-ordinal) var(--font-variant-numeric-slashed-zero) var(--font-variant-numeric-figure) var(--font-variant-numeric-spacing) var(--font-variant-numeric-fraction) !important;
+}
+
+.normal-nums {
+  font-variant-numeric: normal !important;
+}
+
+.ordinal {
+  --font-variant-numeric-ordinal: ordinal !important;
+}
+
+.slashed-zero {
+  --font-variant-numeric-slashed-zero: slashed-zero !important;
+}
+
+.lining-nums {
+  --font-variant-numeric-figure: lining-nums !important;
+}
+
+.oldstyle-nums {
+  --font-variant-numeric-figure: oldstyle-nums !important;
+}
+
+.proportional-nums {
+  --font-variant-numeric-spacing: proportional-nums !important;
+}
+
+.tabular-nums {
+  --font-variant-numeric-spacing: tabular-nums !important;
+}
+
+.diagonal-fractions {
+  --font-variant-numeric-fraction: diagonal-fractions !important;
+}
+
+.stacked-fractions {
+  --font-variant-numeric-fraction: stacked-fractions !important;
+}
+
 .tracking-tighter {
   letter-spacing: -0.05em !important;
 }
@@ -15946,25 +16102,21 @@ video {
 
 .select-none {
   -webkit-user-select: none !important;
-     -moz-user-select: none !important;
           user-select: none !important;
 }
 
 .select-text {
   -webkit-user-select: text !important;
-     -moz-user-select: text !important;
           user-select: text !important;
 }
 
 .select-all {
   -webkit-user-select: all !important;
-     -moz-user-select: all !important;
           user-select: all !important;
 }
 
 .select-auto {
   -webkit-user-select: auto !important;
-     -moz-user-select: auto !important;
           user-select: auto !important;
 }
 
@@ -28422,6 +28574,74 @@ input[type=number]
     flex-wrap: nowrap !important;
   }
 
+  .sm\:place-items-auto {
+    place-items: auto !important;
+  }
+
+  .sm\:place-items-start {
+    place-items: start !important;
+  }
+
+  .sm\:place-items-end {
+    place-items: end !important;
+  }
+
+  .sm\:place-items-center {
+    place-items: center !important;
+  }
+
+  .sm\:place-items-stretch {
+    place-items: stretch !important;
+  }
+
+  .sm\:place-content-center {
+    place-content: center !important;
+  }
+
+  .sm\:place-content-start {
+    place-content: start !important;
+  }
+
+  .sm\:place-content-end {
+    place-content: end !important;
+  }
+
+  .sm\:place-content-between {
+    place-content: space-between !important;
+  }
+
+  .sm\:place-content-around {
+    place-content: space-around !important;
+  }
+
+  .sm\:place-content-evenly {
+    place-content: space-evenly !important;
+  }
+
+  .sm\:place-content-stretch {
+    place-content: stretch !important;
+  }
+
+  .sm\:place-self-auto {
+    place-self: auto !important;
+  }
+
+  .sm\:place-self-start {
+    place-self: start !important;
+  }
+
+  .sm\:place-self-end {
+    place-self: end !important;
+  }
+
+  .sm\:place-self-center {
+    place-self: center !important;
+  }
+
+  .sm\:place-self-stretch {
+    place-self: stretch !important;
+  }
+
   .sm\:items-start {
     align-items: flex-start !important;
   }
@@ -28442,6 +28662,30 @@ input[type=number]
     align-items: stretch !important;
   }
 
+  .sm\:content-center {
+    align-content: center !important;
+  }
+
+  .sm\:content-start {
+    align-content: flex-start !important;
+  }
+
+  .sm\:content-end {
+    align-content: flex-end !important;
+  }
+
+  .sm\:content-between {
+    align-content: space-between !important;
+  }
+
+  .sm\:content-around {
+    align-content: space-around !important;
+  }
+
+  .sm\:content-evenly {
+    align-content: space-evenly !important;
+  }
+
   .sm\:self-auto {
     align-self: auto !important;
   }
@@ -28460,6 +28704,26 @@ input[type=number]
 
   .sm\:self-stretch {
     align-self: stretch !important;
+  }
+
+  .sm\:justify-items-auto {
+    justify-items: auto !important;
+  }
+
+  .sm\:justify-items-start {
+    justify-items: start !important;
+  }
+
+  .sm\:justify-items-end {
+    justify-items: end !important;
+  }
+
+  .sm\:justify-items-center {
+    justify-items: center !important;
+  }
+
+  .sm\:justify-items-stretch {
+    justify-items: stretch !important;
   }
 
   .sm\:justify-start {
@@ -28486,24 +28750,24 @@ input[type=number]
     justify-content: space-evenly !important;
   }
 
-  .sm\:content-center {
-    align-content: center !important;
+  .sm\:justify-self-auto {
+    justify-self: auto !important;
   }
 
-  .sm\:content-start {
-    align-content: flex-start !important;
+  .sm\:justify-self-start {
+    justify-self: start !important;
   }
 
-  .sm\:content-end {
-    align-content: flex-end !important;
+  .sm\:justify-self-end {
+    justify-self: end !important;
   }
 
-  .sm\:content-between {
-    align-content: space-between !important;
+  .sm\:justify-self-center {
+    justify-self: center !important;
   }
 
-  .sm\:content-around {
-    align-content: space-around !important;
+  .sm\:justify-self-stretch {
+    justify-self: stretch !important;
   }
 
   .sm\:flex-1 {
@@ -32227,7 +32491,6 @@ input[type=number]
   }
 
   .sm\:sticky {
-    position: -webkit-sticky !important;
     position: sticky !important;
   }
 
@@ -34323,6 +34586,51 @@ input[type=number]
     -moz-osx-font-smoothing: auto !important;
   }
 
+  .sm\:ordinal, .sm\:slashed-zero, .sm\:lining-nums, .sm\:oldstyle-nums, .sm\:proportional-nums, .sm\:tabular-nums, .sm\:diagonal-fractions, .sm\:stacked-fractions {
+    --font-variant-numeric-ordinal: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    --font-variant-numeric-slashed-zero: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    --font-variant-numeric-figure: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    --font-variant-numeric-spacing: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    --font-variant-numeric-fraction: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    font-variant-numeric: var(--font-variant-numeric-ordinal) var(--font-variant-numeric-slashed-zero) var(--font-variant-numeric-figure) var(--font-variant-numeric-spacing) var(--font-variant-numeric-fraction) !important;
+  }
+
+  .sm\:normal-nums {
+    font-variant-numeric: normal !important;
+  }
+
+  .sm\:ordinal {
+    --font-variant-numeric-ordinal: ordinal !important;
+  }
+
+  .sm\:slashed-zero {
+    --font-variant-numeric-slashed-zero: slashed-zero !important;
+  }
+
+  .sm\:lining-nums {
+    --font-variant-numeric-figure: lining-nums !important;
+  }
+
+  .sm\:oldstyle-nums {
+    --font-variant-numeric-figure: oldstyle-nums !important;
+  }
+
+  .sm\:proportional-nums {
+    --font-variant-numeric-spacing: proportional-nums !important;
+  }
+
+  .sm\:tabular-nums {
+    --font-variant-numeric-spacing: tabular-nums !important;
+  }
+
+  .sm\:diagonal-fractions {
+    --font-variant-numeric-fraction: diagonal-fractions !important;
+  }
+
+  .sm\:stacked-fractions {
+    --font-variant-numeric-fraction: stacked-fractions !important;
+  }
+
   .sm\:tracking-tighter {
     letter-spacing: -0.05em !important;
   }
@@ -34349,25 +34657,21 @@ input[type=number]
 
   .sm\:select-none {
     -webkit-user-select: none !important;
-       -moz-user-select: none !important;
             user-select: none !important;
   }
 
   .sm\:select-text {
     -webkit-user-select: text !important;
-       -moz-user-select: text !important;
             user-select: text !important;
   }
 
   .sm\:select-all {
     -webkit-user-select: all !important;
-       -moz-user-select: all !important;
             user-select: all !important;
   }
 
   .sm\:select-auto {
     -webkit-user-select: auto !important;
-       -moz-user-select: auto !important;
             user-select: auto !important;
   }
 
@@ -46737,6 +47041,74 @@ input[type=number]
     flex-wrap: nowrap !important;
   }
 
+  .md\:place-items-auto {
+    place-items: auto !important;
+  }
+
+  .md\:place-items-start {
+    place-items: start !important;
+  }
+
+  .md\:place-items-end {
+    place-items: end !important;
+  }
+
+  .md\:place-items-center {
+    place-items: center !important;
+  }
+
+  .md\:place-items-stretch {
+    place-items: stretch !important;
+  }
+
+  .md\:place-content-center {
+    place-content: center !important;
+  }
+
+  .md\:place-content-start {
+    place-content: start !important;
+  }
+
+  .md\:place-content-end {
+    place-content: end !important;
+  }
+
+  .md\:place-content-between {
+    place-content: space-between !important;
+  }
+
+  .md\:place-content-around {
+    place-content: space-around !important;
+  }
+
+  .md\:place-content-evenly {
+    place-content: space-evenly !important;
+  }
+
+  .md\:place-content-stretch {
+    place-content: stretch !important;
+  }
+
+  .md\:place-self-auto {
+    place-self: auto !important;
+  }
+
+  .md\:place-self-start {
+    place-self: start !important;
+  }
+
+  .md\:place-self-end {
+    place-self: end !important;
+  }
+
+  .md\:place-self-center {
+    place-self: center !important;
+  }
+
+  .md\:place-self-stretch {
+    place-self: stretch !important;
+  }
+
   .md\:items-start {
     align-items: flex-start !important;
   }
@@ -46757,6 +47129,30 @@ input[type=number]
     align-items: stretch !important;
   }
 
+  .md\:content-center {
+    align-content: center !important;
+  }
+
+  .md\:content-start {
+    align-content: flex-start !important;
+  }
+
+  .md\:content-end {
+    align-content: flex-end !important;
+  }
+
+  .md\:content-between {
+    align-content: space-between !important;
+  }
+
+  .md\:content-around {
+    align-content: space-around !important;
+  }
+
+  .md\:content-evenly {
+    align-content: space-evenly !important;
+  }
+
   .md\:self-auto {
     align-self: auto !important;
   }
@@ -46775,6 +47171,26 @@ input[type=number]
 
   .md\:self-stretch {
     align-self: stretch !important;
+  }
+
+  .md\:justify-items-auto {
+    justify-items: auto !important;
+  }
+
+  .md\:justify-items-start {
+    justify-items: start !important;
+  }
+
+  .md\:justify-items-end {
+    justify-items: end !important;
+  }
+
+  .md\:justify-items-center {
+    justify-items: center !important;
+  }
+
+  .md\:justify-items-stretch {
+    justify-items: stretch !important;
   }
 
   .md\:justify-start {
@@ -46801,24 +47217,24 @@ input[type=number]
     justify-content: space-evenly !important;
   }
 
-  .md\:content-center {
-    align-content: center !important;
+  .md\:justify-self-auto {
+    justify-self: auto !important;
   }
 
-  .md\:content-start {
-    align-content: flex-start !important;
+  .md\:justify-self-start {
+    justify-self: start !important;
   }
 
-  .md\:content-end {
-    align-content: flex-end !important;
+  .md\:justify-self-end {
+    justify-self: end !important;
   }
 
-  .md\:content-between {
-    align-content: space-between !important;
+  .md\:justify-self-center {
+    justify-self: center !important;
   }
 
-  .md\:content-around {
-    align-content: space-around !important;
+  .md\:justify-self-stretch {
+    justify-self: stretch !important;
   }
 
   .md\:flex-1 {
@@ -50542,7 +50958,6 @@ input[type=number]
   }
 
   .md\:sticky {
-    position: -webkit-sticky !important;
     position: sticky !important;
   }
 
@@ -52638,6 +53053,51 @@ input[type=number]
     -moz-osx-font-smoothing: auto !important;
   }
 
+  .md\:ordinal, .md\:slashed-zero, .md\:lining-nums, .md\:oldstyle-nums, .md\:proportional-nums, .md\:tabular-nums, .md\:diagonal-fractions, .md\:stacked-fractions {
+    --font-variant-numeric-ordinal: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    --font-variant-numeric-slashed-zero: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    --font-variant-numeric-figure: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    --font-variant-numeric-spacing: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    --font-variant-numeric-fraction: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    font-variant-numeric: var(--font-variant-numeric-ordinal) var(--font-variant-numeric-slashed-zero) var(--font-variant-numeric-figure) var(--font-variant-numeric-spacing) var(--font-variant-numeric-fraction) !important;
+  }
+
+  .md\:normal-nums {
+    font-variant-numeric: normal !important;
+  }
+
+  .md\:ordinal {
+    --font-variant-numeric-ordinal: ordinal !important;
+  }
+
+  .md\:slashed-zero {
+    --font-variant-numeric-slashed-zero: slashed-zero !important;
+  }
+
+  .md\:lining-nums {
+    --font-variant-numeric-figure: lining-nums !important;
+  }
+
+  .md\:oldstyle-nums {
+    --font-variant-numeric-figure: oldstyle-nums !important;
+  }
+
+  .md\:proportional-nums {
+    --font-variant-numeric-spacing: proportional-nums !important;
+  }
+
+  .md\:tabular-nums {
+    --font-variant-numeric-spacing: tabular-nums !important;
+  }
+
+  .md\:diagonal-fractions {
+    --font-variant-numeric-fraction: diagonal-fractions !important;
+  }
+
+  .md\:stacked-fractions {
+    --font-variant-numeric-fraction: stacked-fractions !important;
+  }
+
   .md\:tracking-tighter {
     letter-spacing: -0.05em !important;
   }
@@ -52664,25 +53124,21 @@ input[type=number]
 
   .md\:select-none {
     -webkit-user-select: none !important;
-       -moz-user-select: none !important;
             user-select: none !important;
   }
 
   .md\:select-text {
     -webkit-user-select: text !important;
-       -moz-user-select: text !important;
             user-select: text !important;
   }
 
   .md\:select-all {
     -webkit-user-select: all !important;
-       -moz-user-select: all !important;
             user-select: all !important;
   }
 
   .md\:select-auto {
     -webkit-user-select: auto !important;
-       -moz-user-select: auto !important;
             user-select: auto !important;
   }
 
@@ -65052,6 +65508,74 @@ input[type=number]
     flex-wrap: nowrap !important;
   }
 
+  .lg\:place-items-auto {
+    place-items: auto !important;
+  }
+
+  .lg\:place-items-start {
+    place-items: start !important;
+  }
+
+  .lg\:place-items-end {
+    place-items: end !important;
+  }
+
+  .lg\:place-items-center {
+    place-items: center !important;
+  }
+
+  .lg\:place-items-stretch {
+    place-items: stretch !important;
+  }
+
+  .lg\:place-content-center {
+    place-content: center !important;
+  }
+
+  .lg\:place-content-start {
+    place-content: start !important;
+  }
+
+  .lg\:place-content-end {
+    place-content: end !important;
+  }
+
+  .lg\:place-content-between {
+    place-content: space-between !important;
+  }
+
+  .lg\:place-content-around {
+    place-content: space-around !important;
+  }
+
+  .lg\:place-content-evenly {
+    place-content: space-evenly !important;
+  }
+
+  .lg\:place-content-stretch {
+    place-content: stretch !important;
+  }
+
+  .lg\:place-self-auto {
+    place-self: auto !important;
+  }
+
+  .lg\:place-self-start {
+    place-self: start !important;
+  }
+
+  .lg\:place-self-end {
+    place-self: end !important;
+  }
+
+  .lg\:place-self-center {
+    place-self: center !important;
+  }
+
+  .lg\:place-self-stretch {
+    place-self: stretch !important;
+  }
+
   .lg\:items-start {
     align-items: flex-start !important;
   }
@@ -65072,6 +65596,30 @@ input[type=number]
     align-items: stretch !important;
   }
 
+  .lg\:content-center {
+    align-content: center !important;
+  }
+
+  .lg\:content-start {
+    align-content: flex-start !important;
+  }
+
+  .lg\:content-end {
+    align-content: flex-end !important;
+  }
+
+  .lg\:content-between {
+    align-content: space-between !important;
+  }
+
+  .lg\:content-around {
+    align-content: space-around !important;
+  }
+
+  .lg\:content-evenly {
+    align-content: space-evenly !important;
+  }
+
   .lg\:self-auto {
     align-self: auto !important;
   }
@@ -65090,6 +65638,26 @@ input[type=number]
 
   .lg\:self-stretch {
     align-self: stretch !important;
+  }
+
+  .lg\:justify-items-auto {
+    justify-items: auto !important;
+  }
+
+  .lg\:justify-items-start {
+    justify-items: start !important;
+  }
+
+  .lg\:justify-items-end {
+    justify-items: end !important;
+  }
+
+  .lg\:justify-items-center {
+    justify-items: center !important;
+  }
+
+  .lg\:justify-items-stretch {
+    justify-items: stretch !important;
   }
 
   .lg\:justify-start {
@@ -65116,24 +65684,24 @@ input[type=number]
     justify-content: space-evenly !important;
   }
 
-  .lg\:content-center {
-    align-content: center !important;
+  .lg\:justify-self-auto {
+    justify-self: auto !important;
   }
 
-  .lg\:content-start {
-    align-content: flex-start !important;
+  .lg\:justify-self-start {
+    justify-self: start !important;
   }
 
-  .lg\:content-end {
-    align-content: flex-end !important;
+  .lg\:justify-self-end {
+    justify-self: end !important;
   }
 
-  .lg\:content-between {
-    align-content: space-between !important;
+  .lg\:justify-self-center {
+    justify-self: center !important;
   }
 
-  .lg\:content-around {
-    align-content: space-around !important;
+  .lg\:justify-self-stretch {
+    justify-self: stretch !important;
   }
 
   .lg\:flex-1 {
@@ -68857,7 +69425,6 @@ input[type=number]
   }
 
   .lg\:sticky {
-    position: -webkit-sticky !important;
     position: sticky !important;
   }
 
@@ -70953,6 +71520,51 @@ input[type=number]
     -moz-osx-font-smoothing: auto !important;
   }
 
+  .lg\:ordinal, .lg\:slashed-zero, .lg\:lining-nums, .lg\:oldstyle-nums, .lg\:proportional-nums, .lg\:tabular-nums, .lg\:diagonal-fractions, .lg\:stacked-fractions {
+    --font-variant-numeric-ordinal: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    --font-variant-numeric-slashed-zero: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    --font-variant-numeric-figure: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    --font-variant-numeric-spacing: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    --font-variant-numeric-fraction: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    font-variant-numeric: var(--font-variant-numeric-ordinal) var(--font-variant-numeric-slashed-zero) var(--font-variant-numeric-figure) var(--font-variant-numeric-spacing) var(--font-variant-numeric-fraction) !important;
+  }
+
+  .lg\:normal-nums {
+    font-variant-numeric: normal !important;
+  }
+
+  .lg\:ordinal {
+    --font-variant-numeric-ordinal: ordinal !important;
+  }
+
+  .lg\:slashed-zero {
+    --font-variant-numeric-slashed-zero: slashed-zero !important;
+  }
+
+  .lg\:lining-nums {
+    --font-variant-numeric-figure: lining-nums !important;
+  }
+
+  .lg\:oldstyle-nums {
+    --font-variant-numeric-figure: oldstyle-nums !important;
+  }
+
+  .lg\:proportional-nums {
+    --font-variant-numeric-spacing: proportional-nums !important;
+  }
+
+  .lg\:tabular-nums {
+    --font-variant-numeric-spacing: tabular-nums !important;
+  }
+
+  .lg\:diagonal-fractions {
+    --font-variant-numeric-fraction: diagonal-fractions !important;
+  }
+
+  .lg\:stacked-fractions {
+    --font-variant-numeric-fraction: stacked-fractions !important;
+  }
+
   .lg\:tracking-tighter {
     letter-spacing: -0.05em !important;
   }
@@ -70979,25 +71591,21 @@ input[type=number]
 
   .lg\:select-none {
     -webkit-user-select: none !important;
-       -moz-user-select: none !important;
             user-select: none !important;
   }
 
   .lg\:select-text {
     -webkit-user-select: text !important;
-       -moz-user-select: text !important;
             user-select: text !important;
   }
 
   .lg\:select-all {
     -webkit-user-select: all !important;
-       -moz-user-select: all !important;
             user-select: all !important;
   }
 
   .lg\:select-auto {
     -webkit-user-select: auto !important;
-       -moz-user-select: auto !important;
             user-select: auto !important;
   }
 
@@ -83367,6 +83975,74 @@ input[type=number]
     flex-wrap: nowrap !important;
   }
 
+  .xl\:place-items-auto {
+    place-items: auto !important;
+  }
+
+  .xl\:place-items-start {
+    place-items: start !important;
+  }
+
+  .xl\:place-items-end {
+    place-items: end !important;
+  }
+
+  .xl\:place-items-center {
+    place-items: center !important;
+  }
+
+  .xl\:place-items-stretch {
+    place-items: stretch !important;
+  }
+
+  .xl\:place-content-center {
+    place-content: center !important;
+  }
+
+  .xl\:place-content-start {
+    place-content: start !important;
+  }
+
+  .xl\:place-content-end {
+    place-content: end !important;
+  }
+
+  .xl\:place-content-between {
+    place-content: space-between !important;
+  }
+
+  .xl\:place-content-around {
+    place-content: space-around !important;
+  }
+
+  .xl\:place-content-evenly {
+    place-content: space-evenly !important;
+  }
+
+  .xl\:place-content-stretch {
+    place-content: stretch !important;
+  }
+
+  .xl\:place-self-auto {
+    place-self: auto !important;
+  }
+
+  .xl\:place-self-start {
+    place-self: start !important;
+  }
+
+  .xl\:place-self-end {
+    place-self: end !important;
+  }
+
+  .xl\:place-self-center {
+    place-self: center !important;
+  }
+
+  .xl\:place-self-stretch {
+    place-self: stretch !important;
+  }
+
   .xl\:items-start {
     align-items: flex-start !important;
   }
@@ -83387,6 +84063,30 @@ input[type=number]
     align-items: stretch !important;
   }
 
+  .xl\:content-center {
+    align-content: center !important;
+  }
+
+  .xl\:content-start {
+    align-content: flex-start !important;
+  }
+
+  .xl\:content-end {
+    align-content: flex-end !important;
+  }
+
+  .xl\:content-between {
+    align-content: space-between !important;
+  }
+
+  .xl\:content-around {
+    align-content: space-around !important;
+  }
+
+  .xl\:content-evenly {
+    align-content: space-evenly !important;
+  }
+
   .xl\:self-auto {
     align-self: auto !important;
   }
@@ -83405,6 +84105,26 @@ input[type=number]
 
   .xl\:self-stretch {
     align-self: stretch !important;
+  }
+
+  .xl\:justify-items-auto {
+    justify-items: auto !important;
+  }
+
+  .xl\:justify-items-start {
+    justify-items: start !important;
+  }
+
+  .xl\:justify-items-end {
+    justify-items: end !important;
+  }
+
+  .xl\:justify-items-center {
+    justify-items: center !important;
+  }
+
+  .xl\:justify-items-stretch {
+    justify-items: stretch !important;
   }
 
   .xl\:justify-start {
@@ -83431,24 +84151,24 @@ input[type=number]
     justify-content: space-evenly !important;
   }
 
-  .xl\:content-center {
-    align-content: center !important;
+  .xl\:justify-self-auto {
+    justify-self: auto !important;
   }
 
-  .xl\:content-start {
-    align-content: flex-start !important;
+  .xl\:justify-self-start {
+    justify-self: start !important;
   }
 
-  .xl\:content-end {
-    align-content: flex-end !important;
+  .xl\:justify-self-end {
+    justify-self: end !important;
   }
 
-  .xl\:content-between {
-    align-content: space-between !important;
+  .xl\:justify-self-center {
+    justify-self: center !important;
   }
 
-  .xl\:content-around {
-    align-content: space-around !important;
+  .xl\:justify-self-stretch {
+    justify-self: stretch !important;
   }
 
   .xl\:flex-1 {
@@ -87172,7 +87892,6 @@ input[type=number]
   }
 
   .xl\:sticky {
-    position: -webkit-sticky !important;
     position: sticky !important;
   }
 
@@ -89268,6 +89987,51 @@ input[type=number]
     -moz-osx-font-smoothing: auto !important;
   }
 
+  .xl\:ordinal, .xl\:slashed-zero, .xl\:lining-nums, .xl\:oldstyle-nums, .xl\:proportional-nums, .xl\:tabular-nums, .xl\:diagonal-fractions, .xl\:stacked-fractions {
+    --font-variant-numeric-ordinal: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    --font-variant-numeric-slashed-zero: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    --font-variant-numeric-figure: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    --font-variant-numeric-spacing: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    --font-variant-numeric-fraction: var(--tailwind-empty,/*!*/ /*!*/) !important;
+    font-variant-numeric: var(--font-variant-numeric-ordinal) var(--font-variant-numeric-slashed-zero) var(--font-variant-numeric-figure) var(--font-variant-numeric-spacing) var(--font-variant-numeric-fraction) !important;
+  }
+
+  .xl\:normal-nums {
+    font-variant-numeric: normal !important;
+  }
+
+  .xl\:ordinal {
+    --font-variant-numeric-ordinal: ordinal !important;
+  }
+
+  .xl\:slashed-zero {
+    --font-variant-numeric-slashed-zero: slashed-zero !important;
+  }
+
+  .xl\:lining-nums {
+    --font-variant-numeric-figure: lining-nums !important;
+  }
+
+  .xl\:oldstyle-nums {
+    --font-variant-numeric-figure: oldstyle-nums !important;
+  }
+
+  .xl\:proportional-nums {
+    --font-variant-numeric-spacing: proportional-nums !important;
+  }
+
+  .xl\:tabular-nums {
+    --font-variant-numeric-spacing: tabular-nums !important;
+  }
+
+  .xl\:diagonal-fractions {
+    --font-variant-numeric-fraction: diagonal-fractions !important;
+  }
+
+  .xl\:stacked-fractions {
+    --font-variant-numeric-fraction: stacked-fractions !important;
+  }
+
   .xl\:tracking-tighter {
     letter-spacing: -0.05em !important;
   }
@@ -89294,25 +90058,21 @@ input[type=number]
 
   .xl\:select-none {
     -webkit-user-select: none !important;
-       -moz-user-select: none !important;
             user-select: none !important;
   }
 
   .xl\:select-text {
     -webkit-user-select: text !important;
-       -moz-user-select: text !important;
             user-select: text !important;
   }
 
   .xl\:select-all {
     -webkit-user-select: all !important;
-       -moz-user-select: all !important;
             user-select: all !important;
   }
 
   .xl\:select-auto {
     -webkit-user-select: auto !important;
-       -moz-user-select: auto !important;
             user-select: auto !important;
   }
 

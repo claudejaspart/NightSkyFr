@@ -189,7 +189,7 @@ export class ItemsNewComponent implements OnInit {
                       }
                       else if (event.type === HttpEventType.Response)
                       {
-                        if (event.body === "SUCCESS-DB-INS")
+                        if (event.body.includes("SUCCESS"))
                         { 
                           // fin upload - message de succès 
                           this.uploadProgress = 100;   
