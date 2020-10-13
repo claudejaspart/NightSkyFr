@@ -102,7 +102,7 @@ export class ItemsListComponent implements OnInit
       else
       {
         // message d'erreur
-        this._snackBar.open("An error occured", "Error", { duration: 1000, horizontalPosition:  'center'});  
+        this._snackBar.open("An error occured", this.deleteItemMessage, { duration: 1000, horizontalPosition:  'center'});  
       }
     }); 
   }
