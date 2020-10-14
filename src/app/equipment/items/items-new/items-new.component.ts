@@ -138,8 +138,7 @@ export class ItemsNewComponent implements OnInit {
       // variable de traitement
       this.isAddingItem = true;
 
-      // variables diverses
-      
+    
 
       // variable formData
       const fd = new FormData();
