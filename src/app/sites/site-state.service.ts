@@ -15,7 +15,7 @@ export class SiteStateService
   public state = new BehaviorSubject<string>('list');
   public selectedSite : any;
   public siteCreated : boolean = false;
-  public siteModified : boolean = false;
+  public sSiteodified : boolean = false;
 
   constructor() { }
 
@@ -34,7 +34,7 @@ export class SiteStateService
 
   
 
-  // states on item selection
+  // states on Site selection
   // ------------------------
 
   setSelectedSite(site : any)
@@ -42,34 +42,34 @@ export class SiteStateService
     this.selectedSite = site;
   }
 
-  getSelectedItem(): any
+  getSelectedSite(): any
   {
     return this.selectedSite;
   }
 
 
-  // states on editing items
+  // states on editing Sites
   // -----------------------
 
-  setItemWasCreated()
+  setSiteWasCreated()
   {
     this.siteCreated = true;
   }
 
-  setItemWasModified()
+  setSiteWasModified()
   {
-    this.siteModified = true;
+    this.sSiteodified = true;
   }
 
   resetCreationAndModificationStates()
   {
     this.siteCreated = false;
-    this.siteModified = false;
+    this.sSiteodified = false;
   }
 
-  hasItemDataChanged() : boolean
+  hasSiteDataChanged() : boolean
   {
-    return this.siteModified || this.siteCreated;
+    return this.sSiteodified || this.siteCreated;
   }
 
 

@@ -23,7 +23,7 @@ export class SitesNewComponent implements OnInit
     description : string = "";
 
     // variables
-    isAddingItem : boolean = false; 
+    isAddingSite : boolean = false; 
     numberSelectedImages : number = 0;
     selectedFiles : File[] = [];
     totalSelectedFileSize  = 0.0;
@@ -39,10 +39,10 @@ export class SitesNewComponent implements OnInit
 
   }
 
-  // returning to the list of items
+  // returning to the list of Sites
   onReturn()
   {
-    this.siteStateService.setItemWasCreated();
+    this.siteStateService.setSiteWasCreated();
     this.siteStateService.setState('list');
     //this.displayService.setDisplayStatus('all');
   }
@@ -95,8 +95,8 @@ export class SitesNewComponent implements OnInit
 
     if (this.checkValidForm())
     {
-      // variable de traitement
-      this.isAddingItem = true;
+      // variable de traSiteent
+      this.isAddingSite = true;
 
           // variable formData
       const fd = new FormData();
@@ -135,9 +135,9 @@ export class SitesNewComponent implements OnInit
                             this.uploadProgress = 100;   
                             this._snackBar.open(' Site created !', "Success !", { duration: 1000, horizontalPosition: 'center',panelClass: 'snackbar'});
                           
-                            if (this.isAddingItem === true)
+                            if (this.isAddingSite === true)
                             {
-                              this.isAddingItem = false;
+                              this.isAddingSite = false;
                               this.onReturn();
                           }                          
 
@@ -147,7 +147,7 @@ export class SitesNewComponent implements OnInit
                             // fin upload avec message d'erreur
                             this.uploadProgress = 100; 
                             let snackBarRef = this._snackBar.open(event.body, "Error !", { duration: 1000, horizontalPosition:  'center', panelClass: 'snackbar'});  
-                            snackBarRef.afterDismissed().subscribe(() => this.isAddingItem = false); 
+                            snackBarRef.afterDismissed().subscribe(() => this.isAddingSite = false); 
                         }
                     }
                 });
