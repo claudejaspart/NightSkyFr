@@ -35,9 +35,9 @@ export class ObservationListsStateService
   // states on Site selection
   // ------------------------
 
-  setSelectedObsList(site : any)
+  setSelectedObsList(obsList : any)
   {
-    this.selectedObsList = site;
+    this.selectedObsList = obsList;
   }
 
   getSelectedObsList(): any

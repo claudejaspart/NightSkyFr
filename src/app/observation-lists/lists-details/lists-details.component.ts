@@ -28,8 +28,8 @@ export class ListsDetailsComponent implements OnInit {
     // valeur de retour de suppression
     private deleteSiteMessage : string = "";
 
-    obsListDataDetails : any = [ {name:'M13', type:'galaxy', magnitude:'4.1', number_observation:'5'} ];
-    //obsListDataDetails : any = [];
+    //obsListDataDetails : any = [ {name:'M13', type:'galaxy', magnitude:'4.1', number_observations:'5'} ];
+    obsListDataDetails : any = [];
 
     ngOnInit(): void 
     {
@@ -44,21 +44,22 @@ export class ListsDetailsComponent implements OnInit {
   
     fetchObservationListData()
     {   
-      let obsListid = this.obsListState.getSelectedObsList();
-      /*
-      this.http.get(`/observationListData?id={obsListId}`).subscribe(retrievedList => 
+      let obsListId = this.obsListState.getSelectedObsList().id;
+  
+    
+      this.http.get(`/observationListsDetails?id=${obsListId}`).subscribe(retrievedList => 
         {
           this.obsListDataDetails = retrievedList;
-          //console.log(this.obsListDataDetails);
-        }
-        );
-        */
+          console.log(this.obsListDataDetails);
+        });
     }
   
     deleteObservationList(siteId : number)
     {}
 
     onReturn()
-    {}
+    {
+      this.obsListState.setState('list');
+    }
 
 }

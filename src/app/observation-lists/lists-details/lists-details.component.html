@@ -40,12 +40,23 @@
                         <div class="flex-1 text-white text-center">
                             <div class="flex items-center">
                                 <div class="flex-1">&nbsp;</div>
-                                <div class="flex-3 w-6 h-6"><img src="../../../assets/Icons/sky-objects/globular-cluster.png" class="w-6 h-6"></div>
+                                <div class="flex-3 w-6 h-6">
+                                    <!-- icones des types -->
+                                    <img src="../../../assets/Icons/sky-objects/globular-cluster.png" class="w-6 h-6" *ngIf="obsList.type.includes('Globular')">
+                                    <img src="../../../assets/Icons/sky-objects/open-cluster.png" class="w-6 h-6" *ngIf="obsList.type.includes('Open')">
+                                    <img src="../../../assets/Icons/sky-objects/galaxy.png" class="w-6 h-6" *ngIf="obsList.type.includes('Galaxy')">
+                                    <img src="../../../assets/Icons/sky-objects/double-star.png" class="w-6 h-6" *ngIf="obsList.type.includes('Double')">
+                                    <img src="../../../assets/Icons/sky-objects/planetary-nebula.png" class="w-6 h-6" *ngIf="obsList.type.includes('Planetary')">
+                                    <img src="../../../assets/Icons/sky-objects/diffuse-nebula.png" class="w-6 h-6" *ngIf="obsList.type.includes('Emission') || obsList.type.includes('Reflection') || obsList.type.includes('Supernova')">
+                                    <img src="../../../assets/Icons/sky-objects/variable-star.png" class="w-6 h-6" *ngIf="obsList.type.includes('Variable')">
+                                    <img src="../../../assets/Icons/sky-objects/planet.png" class="w-6 h-6" *ngIf="obsList.type.includes('Solar')">
+
+                                </div>
                                 <div class="flex-1">&nbsp;</div>
                               </div>
                         </div>
                         <div class="flex-1 text-white text-center">{{obsList.magnitude}}</div>
-                        <div class="flex-1 text-white text-center">{{obsList.number_observation}}</div>
+                        <div class="flex-1 text-white text-center">{{obsList.number_observations}}</div>
 
                         <!-- bouton delete -->
                         <div class="flex-1 text-white text-center">                            

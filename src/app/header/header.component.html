@@ -1,16 +1,16 @@
-<header class="text-gray-500 bg-gray-900 body-font header-size header-custom-position" [ngClass]="{'divide' : userName}">
+<header class="text-gray-500 bg-gray-900 body-font header-size header-custom-position mt-1" [ngClass]="{'divide' : userName}">
 
   <!-- container -->
   <div class="container mx-auto flex flex-wrap p-3 flex-col md:flex-row items-center header-size">
     
     <!-- Image + Titre-->
-    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 ">
+    <a class="flex title-font font-medium items-center text-gray-900 mb-2 md:mb-0 ">
       <img src="../../assets/Logo/official.png"  class="w-6 h-6 float-left mr-1">
       <span class="ml-3 text-white text-xl">Night-Sky.fr</span>
     </a>
 
     <!-- texte personne loggée-->
-    <div class="md:ml-auto mt-1 flex flex-wrap items-center text-base justify-center text-xl" *ngIf="userName">
+    <div class="md:ml-auto  flex flex-wrap items-center text-base justify-center text-xl " *ngIf="userName">
       <div class="mr-3">&nbsp;</div>
       <div class="mr-3"></div>
       <div class="mr-3"></div>
