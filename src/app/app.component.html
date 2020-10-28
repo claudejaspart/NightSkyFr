@@ -5,6 +5,7 @@
         <div class="inline-block text-sm text-white menu-custom-position mt-5">
             <span [ngSwitch]="selectedPage">
                 <p *ngSwitchCase="'dashboard'"><app-dashboard></app-dashboard></p>
+                <p *ngSwitchCase="'observation-list'"><app-observation-lists></app-observation-lists></p>
                 <p *ngSwitchCase="'equipment'"><app-equipment></app-equipment></p>
                 <p *ngSwitchCase="'sites'"><app-sites></app-sites></p>
             </span>

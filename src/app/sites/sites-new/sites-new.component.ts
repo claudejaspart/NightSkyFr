@@ -112,9 +112,6 @@ export class SitesNewComponent implements OnInit
       fd.append('elevation', form.value.elevation);
       fd.append('description', form.value.description);
 
-      console.log(form.value.postalcode)
-
-
       // ajout des images
       this.selectedFiles.forEach( selectedFile => fd.append('image', selectedFile, selectedFile.name));
 

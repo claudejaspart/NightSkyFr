@@ -11,7 +11,7 @@ export class AppComponent
   title = 'Night-Sky.Fr';
   authorized : boolean = true;
   userName : string = "Claude";
-  selectedPage : string = "sites";
+  selectedPage : string = "observation-list";
   
 
   onAuthorized(authorization:boolean): void

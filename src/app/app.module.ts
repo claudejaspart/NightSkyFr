@@ -8,7 +8,6 @@ import { HeaderComponent } from './header/header.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { ObservationsComponent } from './observations/observations.component';
 import { SessionsComponent } from './sessions/sessions.component';
-import { ObservingListComponent } from './observing-list/observing-list.component';
 import { EquipmentComponent } from './equipment/equipment.component';
 import { SitesComponent } from './sites/sites.component';
 import { FovIndicatorsComponent } from './fov-indicators/fov-indicators.component';
@@ -26,6 +25,10 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { SitesListComponent } from './sites/sites-list/sites-list.component';
 import { SitesNewComponent } from './sites/sites-new/sites-new.component';
 import { SitesDetailsComponent } from './sites/sites-details/sites-details.component';
+import { ObservationListsComponent } from './observation-lists/observation-lists.component';
+import { ListsDetailsComponent } from './observation-lists/lists-details/lists-details.component';
+import { ListsNewComponent } from './observation-lists/lists-new/lists-new.component';
+import { ListsListComponent } from './observation-lists/lists-list/lists-list.component';
 
 
 
@@ -38,7 +41,6 @@ import { SitesDetailsComponent } from './sites/sites-details/sites-details.compo
     SideMenuComponent,
     ObservationsComponent,
     SessionsComponent,
-    ObservingListComponent,
     EquipmentComponent,
     SitesComponent,
     FovIndicatorsComponent,
@@ -48,7 +50,11 @@ import { SitesDetailsComponent } from './sites/sites-details/sites-details.compo
     ItemsNewComponent,
     SitesListComponent,
     SitesNewComponent,
-    SitesDetailsComponent
+    SitesDetailsComponent,
+    ObservationListsComponent,
+    ListsDetailsComponent,
+    ListsNewComponent,
+    ListsListComponent
   ],
   imports: [
     BrowserModule,

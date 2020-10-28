@@ -11,7 +11,7 @@ export class SideMenuComponent implements OnInit {
 
   constructor() { }
 
-  currentSelection : string = "sites";
+  currentSelection : string = "observation-list";
 
   @Output() navigationPanel : EventEmitter<string> = new EventEmitter<string>();
 
