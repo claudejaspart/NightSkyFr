@@ -25,10 +25,10 @@
     
                 <!-- header -->
                 <div class="header flex pl-2 mb-1 mt-2 text-white ">
-                    <div class="header-element flex-1">{{col0}}</div>
-                    <div class="header-element flex-1 text-center">{{col1}}</div>
-                    <div class="header-element flex-1 text-center">{{col2}}</div>
-                    <div class="header-element flex-1 text-center">{{col3}}</div>
+                    <div class="header-element flex-1"><span class="cursor-pointer" (click)="sortTable('name')">{{col0}}</span></div>
+                    <div class="header-element flex-1 text-center"><span class="cursor-pointer" (click)="sortTable('type')">{{col1}}</span></div>
+                    <div class="header-element flex-1 text-center"><span class="cursor-pointer" (click)="sortTable('magnitude')">{{col2}}</span></div>
+                    <div class="header-element flex-1 text-center"><span class="cursor-pointer" (click)="sortTable('observed')">{{col3}}</span></div>
                     <div class="header-element flex-1 text-center">Delete</div>
                 </div>
             
@@ -50,7 +50,6 @@
                                     <img src="../../../assets/Icons/sky-objects/diffuse-nebula.png" class="w-6 h-6" *ngIf="obsList.type.includes('Emission') || obsList.type.includes('Reflection') || obsList.type.includes('Supernova')">
                                     <img src="../../../assets/Icons/sky-objects/variable-star.png" class="w-6 h-6" *ngIf="obsList.type.includes('Variable')">
                                     <img src="../../../assets/Icons/sky-objects/planet.png" class="w-6 h-6" *ngIf="obsList.type.includes('Solar')">
-
                                 </div>
                                 <div class="flex-1">&nbsp;</div>
                               </div>

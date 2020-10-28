@@ -24,6 +24,12 @@ export class ListsDetailsComponent implements OnInit {
     col2 : string = "Magn.";
     col3 : string = "#Obs";
 
+    // statut de filtrage par colonne
+    isNameAsc : boolean = false;
+    isTypeAsc : boolean = false;
+    isMagnAsc : boolean = false;
+    isObsAsc : boolean = false;
+
 
     // valeur de retour de suppression
     private deleteSiteMessage : string = "";
@@ -50,7 +56,8 @@ export class ListsDetailsComponent implements OnInit {
       this.http.get(`/observationListsDetails?id=${obsListId}`).subscribe(retrievedList => 
         {
           this.obsListDataDetails = retrievedList;
-          console.log(this.obsListDataDetails);
+          this.sortTable('name');
+          //console.log(this.obsListDataDetails);
         });
     }
   
@@ -61,5 +68,74 @@ export class ListsDetailsComponent implements OnInit {
     {
       this.obsListState.setState('list');
     }
+
+    sortTable(fieldName)
+    {
+      console.log("sorting : " + fieldName);
+
+      // triage par nom
+      if (fieldName === 'name')
+      {
+        if (!this.isNameAsc)
+        {
+          this.isNameAsc = true;
+          this.obsListDataDetails.sort( (a,b)=> { return parseInt(a.name.substring(1)) > parseInt(b.name.substring(1))});
+        }
+        else
+        {
+          this.isNameAsc = false;
+          this.obsListDataDetails.sort( (a,b)=> { return parseInt(a.name.substring(1)) < parseInt(b.name.substring(1))});
+        }
+      }
+
+      // triage par type
+      if (fieldName === 'type')
+      {
+        if (!this.isTypeAsc)
+        {
+          this.isTypeAsc = true;
+          this.obsListDataDetails.sort( (a,b) => { return a.type > b.type });
+        }
+        else
+        {
+          this.isTypeAsc = false;
+          this.obsListDataDetails.sort( (a,b) => { return a.type < b.type });
+        }
+      }
+
+      // triage par type
+      if (fieldName === 'magnitude')
+      {
+        if (!this.isMagnAsc)
+        {
+          this.isMagnAsc = true;
+          this.obsListDataDetails.sort( (a,b) => { return parseFloat(a.magnitude) >  parseFloat(b.magnitude) });
+        }
+        else
+        {
+          this.isMagnAsc = false;
+          this.obsListDataDetails.sort( (a,b) => { return  parseFloat(a.magnitude) <  parseFloat(b.magnitude) });
+        }
+      }
+      
+      // triage par nombre d'observation
+      if (fieldName === 'observed')
+      {
+        if (!this.isObsAsc)
+        {
+          this.isObsAsc = true;
+          this.obsListDataDetails.sort( (a,b) => { return parseInt(a.number_observations) >  parseInt(b.number_observations) });
+        }
+        else
+        {
+          this.isObsAsc = false;
+          this.obsListDataDetails.sort( (a,b) => { return  parseInt(a.number_observations) <  parseInt(b.number_observations) });
+        }
+      }
+
+
+    }
+
+
 
 }
